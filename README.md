@@ -1,3 +1,2 @@
 # teineryhm
-Veebirakendused
-heyya
+2018 S aine "Veebirakendused" teise rühma teine rühm.
