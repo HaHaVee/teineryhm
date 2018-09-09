@@ -1,0 +1,1 @@
+alert("Richardi esimene alert");
