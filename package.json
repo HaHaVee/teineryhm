@@ -19,9 +19,4 @@
         "url": "https://github.com/HaHaVee/teineryhm/issues"
     },
     "homepage": "https://github.com/HaHaVee/teineryhm#readme",
-    dependencies": {
-        "ejs": "^2.6.1",
-        "express": "^4.16.3"
-    }
-
 }
