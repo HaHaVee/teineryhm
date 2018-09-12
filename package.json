@@ -1,23 +1,27 @@
 ﻿{
-  "name": "teineryhm",
-  "version": "1.0.0",
-  "description": "2018 S aine \"Veebirakendused\" teise r�hma teine r�hm.",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1", "start": "node app.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/HaHaVee/teineryhm.git"
-  },
-  "author": "Hans, Richard, Janna",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/HaHaVee/teineryhm/issues"
-  },
-  "homepage": "https://github.com/HaHaVee/teineryhm#readme",
-  dependencies": {
-    "ejs": "^2.6.1",
-    "express": "^4.16.3"
-  }
+
+    "name": "teineryhm",
+    "version": "1.0.0", 
+    "description": "2018 S aine \"Veebirakendused\" teise ryhma teine ryhm.",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node app.js"
+    },
+    "repository": {
+
+        "type": "git",
+        "url": "git+https://github.com/HaHaVee/teineryhm.git"
+    },
+    "author": "Hans, Richard, Janna",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/HaHaVee/teineryhm/issues"
+    },
+    "homepage": "https://github.com/HaHaVee/teineryhm#readme",
+    dependencies": {
+        "ejs": "^2.6.1",
+        "express": "^4.16.3"
+    }
+
 }
