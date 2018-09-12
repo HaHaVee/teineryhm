@@ -7,6 +7,10 @@ app.get("/", function(req, res){
 	res.send("homepage");
 });
 
+app.get("*",  function(req, res){
+	res.send("Some other pages");
+})
+
 var port = 80;
 var host = "0.0.0.0";
 app.listen(port, host, function() {
