@@ -7,6 +7,8 @@ app.get("/", function(req, res){
 	res.send("homepage");
 });
 
-app.listen(3000, function () {
-  console.log('Example app listening on port ' + port + '!');
+var port = 80;
+var host = "0.0.0.0";
+app.listen(port, host, function() {
+  console.log("Server started");
 });
