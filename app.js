@@ -1,15 +1,13 @@
 var express = require("express");
 var app = express();
+var path    = require("path");
 
 app.use(express.static(__dirname + "/public"));
 
 app.get("/", function(req, res){
-	res.send("homepage");
+	res.sendFile(path.join(__dirname+'/views/index.html'));
 });
 
-app.get("*",  function(req, res){
-	res.send("Some other pages");
-})
 
 var port = 80;
 var host = "0.0.0.0";
