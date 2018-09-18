@@ -23,9 +23,60 @@ h5{
 	background-color: white;
 	height: 75vh;
 }
+.right_box, .left_box{
+	margin: 5%;
+}
+.left_box{
+	color:white;
+}
 h3.main_question strong{
 	color: #999999;
     font-size: 18px;
     font-weight: 400;
     margin-bottom: 5px;
+}
+h3.main_question {
+	color: black;
+}
+input.form-control, select.form-control, textarea.form-control{
+	background:none;
+	border:none;
+	border-bottom: 2px solid #e8ebed;    
+	padding: 6px 12px 6px 0;
+	box-shadow: none;
+	-webkit-transition: none;
+	border-radius: 0;
+	margin-bottom: 5%;
+	}
+select.wizard_row{
+	margin: 10%;
+}
+.form-control{
+	width:50%;
+}
+button.cancel, button.forward, button.submit {
+    background: #eb1d5d;
+}
+button.cancel, button.forward, button.submit {
+    border: none;
+    color: #fff;
+    padding: 7px 20px;
+    text-decoration: none;
+    transition: background .5s ease;
+    -moz-transition: background .5s ease;
+    -webkit-transition: background .5s ease;
+    -o-transition: background .5s ease;
+    display: inline-block;
+    cursor: pointer;
+    font-weight: 400;
+    outline: none;
+    text-align: center;
+    position: relative;
+    font-size: 15px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    line-height: 1;
+    padding: 10px 30px 10px 30px;
+}
 }
