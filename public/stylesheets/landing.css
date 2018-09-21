@@ -7,6 +7,30 @@ h5{
 	font-weight: 600;
 	margin-bottom: 5vh;
 }
+p{
+	text-align: right;
+}
+input{
+	display: block;
+	width: 50%;
+	border: none;
+	border-bottom: 2px solid #e8ebed;
+	outline: none;
+}
+button{
+	color: #fff;
+	background-color: #eb1d5d;
+	border: none;
+	cursor: pointer;
+	font-weight: 400;
+	border-radius: 3px;
+}
+button:focus{
+	outline: none;
+}
+#pagenumber{
+	color: #999;
+}
 .container{
 	margin-top: 40px;
 }
@@ -20,12 +44,14 @@ h5{
 	margin: 0;
 }
 .col-sm-5{
+	color: white;
 	background-color: #1CBBB4;
 	height: 75vh
 	margin: 0;
 	padding: 0;
 }
 .col-sm-7{
+	color: black;
 	background-color: white;
 	height: 75vh;
 	margin: 0;
