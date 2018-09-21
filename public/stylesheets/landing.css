@@ -15,13 +15,21 @@ h5{
 	height: 75vh;
 	background-color: white;
 }
+.row{
+	padding: 0;
+	margin: 0;
+}
 .col-sm-5{
 	background-color: #1CBBB4;
 	height: 75vh
+	margin: 0;
+	padding: 0;
 }
 .col-sm-7{
 	background-color: white;
 	height: 75vh;
+	margin: 0;
+	padding: 0;
 }
 .right_box, .left_box{
 	margin: 5%;
