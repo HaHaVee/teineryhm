@@ -8,7 +8,7 @@ h5{
 	margin-bottom: 5vh;
 }
 p{
-	text-align: right;
+	text-align: center;
 }
 input{
 	display: block;
@@ -90,5 +90,4 @@ button:focus{
 }
 #content{
 	margin-top: 5%;
-	max-height: 100%
 }
