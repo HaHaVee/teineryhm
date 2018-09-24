@@ -4,8 +4,14 @@ var path = require("path");
 
 app.use(express.static(__dirname + "/public"));
 
-app.get("*", function(req, res){
+app.get("/", function(req, res){
 	res.sendFile(path.join(__dirname+'/views/index.html'));
+});
+app.get("/second", function(req, res){
+	res.sendFile(path.join(__dirname+'/views/page2.html'));
+});
+app.get("*", function(req, res){
+	res.send("Seda lehte ei eksisteeri.");
 });
 
 
