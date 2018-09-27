@@ -1,0 +1,76 @@
+@@ -76,6 +76,16 @@ label{
+ 	height: 75vh;
+ 	background-color: white;
+ }
+ .contentbox{
+ 	margin:10%;
+ }
+ .form-check-label{
+ 	font-size: small;
+
+ }
+.btn-primary-outline {
+  background-color: transparent;
+  border-color: #ccc;
+  color:black;
+}
+ h2{
+ 	color:black;
+ }
+
+body{
+	background-color: #14251F;
+	color: #61E8DC;
+	font-family: 'Poppins', sans-serif;
+}
+h5{
+	font-weight: 600;
+	margin-bottom: 5vh;
+}
+
+.container{
+	margin-top: 5vh;
+}
+.green-bg {
+	background-color: #1CBBB4;
+	box-sizing: border-box;
+    text-align: right;
+}
+.white-bg {
+	background-color: white;
+	box-sizing: border-box;
+}
+input.form-control, select.form-control, textarea.form-control{
+	display: block;
+	width: 50%;
+	border: none;
+	border-bottom: 2px solid #e8ebed;
+	outline: none;
+	background:none;   
+	padding: 6px 12px 6px 0;
+	box-shadow: none;
+	-webkit-transition: none;
+	border-radius: 0;
+	margin-bottom: 5%;
+	}
+button{
+	color: #fff;
+	background-color: #eb1d5d;
+	border: none;
+	cursor: pointer;
+	font-weight: 400;
+	border-radius: 3px;
+}
+button:focus{
+	outline: none;
+}
+label{
+	display: block;
+	text-align: right;
+}
+#pagenumber{
+	color: #999;
+	font-size: 18px;
+    font-weight: 400
+	margin-bottom: 5px;
+}
