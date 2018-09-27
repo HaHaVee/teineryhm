@@ -64,12 +64,17 @@ button{
 button:focus{
 	outline: none;
 }
+label{
+	display: block;
+	text-align: right;
+}
 #pagenumber{
 	color: #999;
 	font-size: 18px;
     font-weight: 400
 	margin-bottom: 5px;
 }
+
 /*
  .row{
  	padding: 0;
@@ -78,7 +83,3 @@ button:focus{
  	height: 75vh;
  	box-sizing: border-box;
  }
-
-
-
-
