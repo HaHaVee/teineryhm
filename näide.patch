@@ -1,0 +1,179 @@
+diff --git a/public/stylesheets/landing.css b/public/stylesheets/landing.css
+index 28d6924..06f09ec 100644
+--- a/public/stylesheets/landing.css
++++ b/public/stylesheets/landing.css
+@@ -76,6 +76,16 @@ label{
+ 	height: 75vh;
+ 	background-color: white;
+ }
++.green-bg {
++	background-color: #1CBBB4;
++	box-sizing: border-box;
++    text-align: right;
++}
++.white-bg {
++	background-color: white;
++	box-sizing: border-box;
++}
++/*
+ .row{
+ 	padding: 0;
+ 	margin: 0;
+@@ -92,6 +102,7 @@ label{
+ 	height: 75vh;
+ 	box-sizing: border-box;
+ }
++*/
+ #content{
+ 	margin-top: 5%;
+ 	max-height: 100%
+diff --git a/views/index.html b/views/index.html
+index 1642249..0aa256b 100644
+--- a/views/index.html
++++ b/views/index.html
+@@ -12,8 +12,50 @@
+ 	</head>
+ 	<body>
+ 		<div class="container">
++            <form action="#">
+ 			<h5>S E C U R E B A D G E R</h5>
+ 			<div id="contentbox">
++                <div class="row">
++                    <div class="col-sm-4 green-bg">
++                        Name of tenant
++                    </div>
++                    <div class="col-sm-8 white-bg">
++                        <input type="text" class="form-control" id="name">
++                    </div>
++                </div>
++                <div class="row">
++                    <div class="col-sm-4 green-bg">
++                        Sum of rent
++                    </div>
++                    <div class="col-sm-8 white-bg">
++                        <input type="text" class="form-control" id="name">
++                    </div>
++                </div>
++                <div class="row">
++                    <div class="col-sm-4 green-bg">
++                        Address
++                    </div>
++                    <div class="col-sm-8 white-bg">
++                        <input type="text" class="form-control" id="name">
++                    </div>
++                </div>
++                <div class="row">
++                    <div class="col-sm-4 green-bg">
++                        Other conditions
++                    </div>
++                    <div class="col-sm-8 white-bg">
++                        <input type="text" class="form-control" id="name">
++                    </div>
++                </div>
++                <div class="row">
++                    <div class="col-sm-4 green-bg">
++                        Contract name
++                    </div>
++                    <div class="col-sm-8 white-bg">
++                        <input type="text" class="form-control" id="name">
++                    </div>
++                </div>
++                <!--
+ 				<form class="form-horizontal row">
+ 					<div class="col-sm-4 form-group">
+ 						<div id="content">
+@@ -27,86 +69,7 @@
+ 							<label for="yo">Name of contract</label>
+ 						</div>
+ 					</div>
+-					<div class="col-sm-8">
+-						<div id="content">
+-							<h4 id="pagenumber">1/4</h4>
+-							<h2>Contract creation</h2>
+-							<div id="inputs">
+-								<input class="form-control" type="text" name="owner">
+-								<input type="text" name="tenant">
+-								<input type="text" name="rent">
+-								<input type="text" name="address">
+-								<input type="text" name="conditions">
+-								<input type="text" name="contract">
+-							</div>
+-						</div>
+-						<div align="right">
+-							<button>Cancel</button>
+-							<button>Save & next</button>
+-						</div>
+-						<!--<div class="right_box">
+-							<h3 class="main_question">
+-								<strong>1/2</strong>
+-								<br>
+-								Contract creation</h3>	
+-							<div class="wizard_row">
+-								<div class="col-dm-6">
+-									<div class="form-input">
+-										<input type="text" name="owner_full_name" class="form-control required">
+-									</div>
+-								</div>
+-							</div>
+-							<div class="wizard_row">
+-								<div class="col-dm-6">
+-									<div class="form-input">
+-										<input type="text" name="tenant_full_name" class="form-control required">
+-									</div>
+-								</div>
+-							</div>
+-							<div class="wizard_row">
+-								<div class="col-dm-6">
+-									<div class="form-input">
+-										<input type="text" name="sum_of_rent" class="form-control required">
+-									</div>
+-								</div>
+-							</div>
+-							<div class="wizard_row">
+-								<div class="col-dm-6">
+-									<div class="form-input">
+-										<input type="text" name="object_address" class="form-control required">
+-									</div>
+-								</div>
+-							</div>-->
+-							<!--lisatingimuste kirjutamise asemel muu valik luua/infoks popover juurde-->
+-							<!--
+-							<div class="wizard_row">
+-								<div class="col-dm-6">
+-									<div class="form-input">
+-										<input type="text" name="other_conditions" class="form-control required">
+-									</div>
+-								</div>
+-							</div>-->
+-							<!--genereeritav nimi-->
+-							<!--
+-							<div class="wizard_row">
+-								<div class="col-dm-6">
+-									<div class="form-input">
+-										<input type="text" name="name_of_contract" class="form-control required">
+-									</div>
+-								</div>
+-							</div>
+-							<div class="row">
+-								<div class="col-sm">
+-      								<button type="button" name="cancel" class="cancel">Cancel</button>
+-    							</div>
+-    							<div class="col-sm">
+-      								<button type="button" name="forward" class="forward">Save & next</button>
+-    							</div>
+-							</div>
+-						</div>
+-					-->
+-					</div>
+-				</div>
++                -->
+ 			</div>
+ 		</div>
+ 		
+@@ -114,4 +77,4 @@
+ 	
+ 		<script src="../scripts/landing.js" type="text/javascript"></script>
+ 	</body>
+-</html>
+\ No newline at end of file
++</html>
