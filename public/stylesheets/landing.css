@@ -1,6 +1,10 @@
-@@ -76,6 +76,16 @@ label{
- 	height: 75vh;
+html{
+	height: 100%;
+}
+
+label{
  	background-color: white;
+ 	color:black;
  }
  .contentbox{
  	margin:10%;
@@ -11,13 +15,16 @@
  }
  input[type=radio] {
     border: 0px;
-    width: 30%;
-    height: 2em;
+    width: 100%;
+    height: 1em;
+}
+.form-check-inline{
+	padding-left: 2%
 }
  h2{
  	color:black;
+ 	margin-bottom: 5%;
  }
-
 body{
 	background-color: #14251F;
 	color: #61E8DC;
@@ -35,10 +42,15 @@ h5{
 	background-color: #1CBBB4;
 	box-sizing: border-box;
     text-align: right;
+    color:white;
 }
 .white-bg {
 	background-color: white;
 	box-sizing: border-box;
+}
+/* media lisada, et col-id ei jääks kitsas*/
+.col-sm-4{
+	padding-top: 1%;
 }
 input.form-control, select.form-control, textarea.form-control{
 	display: block;
@@ -51,35 +63,38 @@ input.form-control, select.form-control, textarea.form-control{
 	box-shadow: none;
 	-webkit-transition: none;
 	border-radius: 0;
-	margin-bottom: 5%;
+	margin-bottom: 2%;
 	}
 button{
+	border:none;
+	cursor: pointer;
+	border-radius: 3px;
+}
+.button{
 	color: #fff;
 	background-color: #eb1d5d;
-	border: none;
-	cursor: pointer;
 	font-weight: 400;
-	border-radius: 3px;
+	margin-top:5%;
+	margin-bottom: 5%;
+	margin-left: 5%;
 }
 button:focus{
 	outline: none;
+}
+.btn-info{
+	margin:none;
+	color: #1CBBB4
+	background-color:white;
+
 }
 label{
 	display: block;
 	text-align: right;
 }
 #pagenumber{
+	margin-top: 5%;
 	color: #999;
 	font-size: 18px;
     font-weight: 400
-	margin-bottom: 5px;
+	
 }
-
-/*
- .row{
- 	padding: 0;
- 	margin: 0;
-@@ -92,6 +102,7 @@ label{
- 	height: 75vh;
- 	box-sizing: border-box;
- }
