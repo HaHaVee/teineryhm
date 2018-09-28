@@ -5,17 +5,21 @@ label{
  	height: 75vh;
  	background-color: white;
  }
- .contentbox{
- 	margin:10%;
- }
  .form-check-label{
  	font-size: small;
-
  }
+ /* media lisada, et col-id ei jääks kitsas*/
+.col-sm-4{
+	padding-top: 1%;
+}
 .btn-primary-outline {
   background-color: transparent;
   border-color: #ccc;
   color:black;
+}
+/*media*/
+.dropdown{
+	padding: 1%;
 }
  h2{
  	color:black;
@@ -39,6 +43,7 @@ h5{
 	background-color: #1CBBB4;
 	box-sizing: border-box;
     text-align: right;
+    color:white;
 }
 .white-bg {
 	background-color: white;
@@ -55,15 +60,18 @@ input.form-control, select.form-control, textarea.form-control{
 	box-shadow: none;
 	-webkit-transition: none;
 	border-radius: 0;
-	margin-bottom: 5%;
+	margin-bottom: 2%;
 	}
-button{
+.button{
+	border:none;
+	cursor: pointer;
+	border-radius: 3px;
 	color: #fff;
 	background-color: #eb1d5d;
-	border: none;
-	cursor: pointer;
 	font-weight: 400;
-	border-radius: 3px;
+	margin-top:5%;
+	margin-bottom: 5%;
+	margin-left: 5%;
 }
 button:focus{
 	outline: none;
@@ -73,8 +81,9 @@ label{
 	text-align: right;
 }
 #pagenumber{
+	margin-top: 5%;
 	color: #999;
 	font-size: 18px;
     font-weight: 400
-	margin-bottom: 5px;
+	
 }
