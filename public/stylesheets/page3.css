@@ -1,10 +1,9 @@
 html{
 	height: 100%;
 }
-label{
- 	height: 75vh;
- 	background-color: white;
- }
+body{
+	height: 90vh;
+}
  .form-check-label{
  	font-size: small;
  }
