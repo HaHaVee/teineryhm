@@ -1,0 +1,7 @@
+1) sisu css korda
+
+2) radio button 1 korraga
+
+3) kui 1/4 lehel valida fixed-term, siis peaks ilmuma mingi kalender
+
+4) sum of rent lahter. dropdownid valuutadele, datele ka kalender
