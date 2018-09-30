@@ -3,3 +3,5 @@ $(function () {
   	container: 'body'
   })
 })
+
+$('.dropdown-toggle').dropdown()
