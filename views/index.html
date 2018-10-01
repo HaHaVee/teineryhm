@@ -30,16 +30,41 @@
                     <!-- tähtajalise juurde kalender/valik sisestada, modal?-->
                     <div class="col-sm-8 white-bg">
                     	<div class="form-check form-check-inline">
-                        	<input type="radio" class="form-check-input" id="	openend">
+                        	<input type="radio" class="form-check-input" id="openend" name="term">
                         	<label class="form-check-label" for="openend">
     						Open-ended
     						</label>
     					</div>
     					<div class="form-check form-check-inline">
-                        	<input type="radio" class="form-check-input" id="	fixed-term">
+                        	<input type="radio" class="form-check-input" id="fixed-term" name="term" data-toggle="modal" data-target="#dateModal">
                         	<label class="form-check-label" for="fixed-term">
     						Fixed-term
     						</label>
+
+                            <div class="modal fade" id="dateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                               <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="end-date" id="end-date">Pick the end-date</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                  <!-- min ja max vaja genereerida-->
+                                  <div class="modal-body">
+                                    <form>
+                                      Enter a date of expiration:
+                                      <input type="date"class="form-control" name="bday" min="2000-01-02" max="2020-01-01"><br>
+                                    </form>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                  </div>
+                                </div>
+                              </div>
+                        </div>
+
     					</div>
                     </div>
                 </div>
