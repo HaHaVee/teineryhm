@@ -11,9 +11,10 @@ html{
     height: 1em;
 }
 .form-check-inline{
-	padding-left: 2%
+	padding-left: 2%;
+	margin-bottom: 2%;
 }
- h2{
+h3{
  	color:black;
  	margin-bottom: 5%;
  }
@@ -61,13 +62,17 @@ input.form-control, select.form-control, textarea.form-control{
 .form-inline{
 	max-width: 50%;
 }
+/* NB margin-bottom */
 .form-inline .form-control {
  max-width: 20%;
+ margin-bottom: 2%;
  }
  input.form-control.date-ov{
  min-width: 50%;
  width: 56%;
+ padding: 6px 12px 6px 12px;
  max-width: 56%;
+ margin-bottom: 2%;
  }
  #dropdownMenuButton{
  	max-width: 20%; 

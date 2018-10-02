@@ -15,14 +15,16 @@ body{
   background-color: transparent;
   border-color: #ccc;
   color:black;
-  width: 30vw;
-  min-width: 20vw;
+  min-width: 25%;
 }
 /*media*/
 .dropdown{
 	padding: 1%;
 }
- h2{
+.dropdown-item{
+	text-align: center;
+}
+h3{
  	color:black;
  	margin-bottom: 5%;
  }

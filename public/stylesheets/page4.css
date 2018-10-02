@@ -1,7 +1,7 @@
 html{
 	height: 100%;
 }
- h2{
+ h3{
  	color:black;
  	margin-bottom: 5%;
  }
@@ -27,13 +27,16 @@ h5{
 	background-color: white;
 	box-sizing: border-box;
 }
+input.form-control.signature{
+	width: 50%;
+}
 /* media lisada, et col-id ei jääks kitsas*/
 .col-sm-4{
 	padding-top: 1%;
 }
 input.form-control, select.form-control, textarea.form-control{
 	display: block;
-	width: 50%;
+	width: 100%;
 	border: none;
 	border-bottom: 2px solid #e8ebed;
 	outline: none;
