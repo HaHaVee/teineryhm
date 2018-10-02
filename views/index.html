@@ -84,23 +84,41 @@
                         <input type="text" class="form-control" id="name">
                     </div>
                 </div>
+                <!--NB-->
                 <div class="row">
                     <div class="col-sm-4 green-bg">
                         Sum of rent
                     </div>
-                    <div class="col-sm-2 white-bg">
-                        <input type="text" class="form-control" id="name">
+                    <div class="col-sm-8 white-bg rent">
+                        <form class="form-inline">
+                            <input type="text" class="form-control" id="suminput" name="suminput">
+
+                            <button class="btn btn-primary-outline dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            EUR
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="#"></a>
+                            </div>
+
+                            <input type="date" class="form-control date-ov" name="rentdate" min="2000-01-02" max="2020-01-01">
+
+                        </form>
                     </div>
-                    <div class="col-sm-2 white-bg">
+
+                    <!--
+                    <div class="col-sm-4 white-bg rent">
+                        <input type="text" class="form-control" id="suminput" name="suminput">
+
                         <button class="btn btn-primary-outline dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             EUR
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <a class="dropdown-item" href="#"></a>
-                            </div>
+                        </div>
+
+                        <input type="date" class="form-control" name="rentdate" min="2000-01-02" max="2020-01-01">
                     </div>
                     <div class="col-sm-4 white-bg">
-                        <input type="date"class="form-control" name="rentdate" min="2000-01-02" max="2020-01-01"><br>
                     </div>
                 </div>
                     <!--<div class="col-sm-2 white-bg">
