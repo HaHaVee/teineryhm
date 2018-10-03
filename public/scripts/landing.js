@@ -4,8 +4,6 @@ $(function () {
   })
 });
 
-$('.dropdown-toggle').dropdown();
-
 $("#cancelbutton").click(function(){
 	location.href = "/second";
 });
