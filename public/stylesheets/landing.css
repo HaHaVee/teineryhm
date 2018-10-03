@@ -99,7 +99,6 @@ button:focus{
 	margin:none;
 	color: #1CBBB4
 	background-color:white;
-
 }
 label{
 	display: block;
@@ -112,4 +111,7 @@ label{
 	color: #999;
 	font-size: 18px;
     font-weight: 400
+}
+.modal-content{
+	color: black;
 }
