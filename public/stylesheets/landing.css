@@ -46,6 +46,9 @@ h5{
 .col-sm-4{
 	padding-top: 1%;
 }
+label{
+	background-color: none;
+}
 input.form-control, select.form-control, textarea.form-control{
 	display: block;
 	width: 50%;
@@ -55,7 +58,6 @@ input.form-control, select.form-control, textarea.form-control{
 	background:none;   
 	padding: 6px 12px 6px 0;
 	box-shadow: none;
-	-webkit-transition: none;
 	border-radius: 0;
 	margin-bottom: 2%;
 	}
@@ -96,11 +98,11 @@ button:focus{
 	outline: none;
 }
 .btn-info{
-	margin:none;
-	color: #1CBBB4
-	background-color:white;
+	color: #fff;
+    background-color: #17a2b8;
+    border-color: #17a2b8;
 }
-label{
+label.form-check-label{
 	display: block;
 	text-align: right;
 	background-color: white;
@@ -115,3 +117,8 @@ label{
 .modal-content{
 	color: black;
 }
+#cancelbutton, #nextbutton{
+	float:right;
+	overflow: hidden;
+}
+
