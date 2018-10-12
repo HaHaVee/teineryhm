@@ -22,7 +22,7 @@ body{
 	background-color: #14251F;
 	color: #61E8DC;
 	font-family: 'Poppins', sans-serif;
-	height:100%;
+	height: 100%;
 }
 h5{
 	font-weight: 600;
@@ -36,7 +36,7 @@ h5{
 	background-color: #1CBBB4;
 	box-sizing: border-box;
     text-align: right;
-    color:white;
+    color: white;
 }
 .white-bg {
 	background-color: white;
@@ -48,7 +48,7 @@ h5{
 	padding-top: 1%;
 }
 label{
-	background-color: none;
+	background-color: transparent;
 }
 input.form-control, select.form-control, textarea.form-control{
 	display: block;
