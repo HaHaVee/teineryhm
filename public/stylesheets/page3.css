@@ -2,7 +2,7 @@ html{
 	height: 100%;
 }
 body{
-	height: 90vh;
+	height: 100%;
 }
  .form-check-label{
  	font-size: small;
@@ -40,7 +40,15 @@ h5{
 }
 
 .container{
-	margin-top: 5vh;
+	padding-top: 5vh;
+	padding-bottom: 5vh;
+	height: 100%;
+}
+#contentbox{
+	min-height: 80vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 .green-bg {
 	background-color: #1CBBB4;
@@ -75,6 +83,7 @@ input.form-control, select.form-control, textarea.form-control{
 	margin-top:5%;
 	margin-bottom: 5%;
 	margin-left: 5%;
+	float:right;
 }
 button:focus{
 	outline: none;
@@ -88,5 +97,8 @@ label{
 	color: #999;
 	font-size: 18px;
     font-weight: 400
-	
+}
+#stretch{
+	height:100%;
+	flex:1;
 }

@@ -22,6 +22,7 @@ body{
 	background-color: #14251F;
 	color: #61E8DC;
 	font-family: 'Poppins', sans-serif;
+	height:100%;
 }
 h5{
 	font-weight: 600;
@@ -90,9 +91,7 @@ button{
 	color: #fff;
 	background-color: #eb1d5d;
 	font-weight: 400;
-	margin-top:5%;
-	margin-bottom: 5%;
-	margin-left: 5%;
+	margin:5%;
 }
 button:focus{
 	outline: none;
@@ -100,7 +99,6 @@ button:focus{
 .btn-info{
 	color: #fff;
     background-color: #17a2b8;
-    border-color: #17a2b8;
 }
 label.form-check-label{
 	display: block;
@@ -120,5 +118,15 @@ label.form-check-label{
 #cancelbutton, #nextbutton{
 	float:right;
 	overflow: hidden;
+}
+#contentbox{
+	min-height: 80vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+#stretch{
+	height:100%;
+	flex:1;
 }
 
