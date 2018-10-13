@@ -1,9 +1,29 @@
-var express = require("express");
-var app = express();
-var path = require("path");
-var mongoose = require("mongoose");
+var express = require("express"),
+	path = require("path"),
+	mongoose = require("mongoose"),
+	passport = require("passport"),
+	bodyParser = require("body-parser"),
+	User = require("./models/user"),
+	LocalStrategy = require("passport-local"),
+	passportLocalMongoose = require("passport-local-mongoose");
 
 mongoose.connect("mongodb://localhost/demo");
+
+var app = express();
+
+app.use(require("express-session")({
+	secret: "Mu kutsa nimi on Arro",
+	resave: false,
+	saveUninitialized: false
+}));
+
+app.use(passport.initialize());	//set up passport
+app.use(passport.session());	//set up passport
+
+//read sessions, take encoded data from session, unencode it, encode it, serialize it, bring back to session
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+//end
 
 app.use(express.static(__dirname + "/public"));
 
