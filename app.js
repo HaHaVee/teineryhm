@@ -7,7 +7,8 @@ var express = require("express"),
 	LocalStrategy = require("passport-local"),
 	passportLocalMongoose = require("passport-local-mongoose");
 
-mongoose.connect("mongodb://localhost/demo");
+var url = process.env.VRDB || "mongodb://localhost/demo"; //backup 4 good practice
+mongoose.connect(url);
 
 var app = express();
 app.use(bodyParser.urlencoded({extended: true}));
