@@ -90,5 +90,8 @@ a:hover {
     text-decoration: none;
     color:white;
 }
-
+p{
+	padding-right: 10%;
+	padding-left: 10%;
+}
 
