@@ -1,6 +1,22 @@
 html{
 	height: 100%;
 }
+body{
+	background-color: #14251F;
+	color: #61E8DC;
+	font-family: 'Poppins', sans-serif;
+	height:100%;
+}
+.container{
+	padding-top: 5vh;
+	padding-bottom: 5vh;
+}
+#contentbox{
+	min-height: 80vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
  .form-check-label{
  	font-size: small;
 
@@ -18,19 +34,9 @@ h3{
  	color:black;
  	margin-bottom: 5%;
  }
-body{
-	background-color: #14251F;
-	color: #61E8DC;
-	font-family: 'Poppins', sans-serif;
-	height:100%;
-}
 h5{
 	font-weight: 600;
 	margin-bottom: 5vh;
-}
-
-.container{
-	padding-top: 5vh;
 }
 .green-bg {
 	background-color: #1CBBB4;
@@ -87,12 +93,6 @@ button{
 	cursor: pointer;
 	border-radius: 3px;
 }
-.button{
-	color: #fff;
-	background-color: #eb1d5d;
-	font-weight: 400;
-	margin:5%;
-}
 button:focus{
 	outline: none;
 }
@@ -118,15 +118,26 @@ label.form-check-label{
 #cancelbutton, #nextbutton{
 	float:right;
 	overflow: hidden;
+	color: #fff;
+	background-color: #eb1d5d;
+	font-weight: 400;
+	margin:5%;
+	border:none;
+	cursor: pointer;
+	border-radius: 3px;
 }
-#contentbox{
-	min-height: 80vh;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
+.button{
+	border-radius: 3px !important;
+	border: none !important;
+    -webkit-appearance: none;
+    padding: 1%;
+	text-decoration: none;
 }
 #stretch{
 	height:100%;
 	flex:1;
+}
+a:hover {
+    text-decoration: none;
 }
 

@@ -3,9 +3,25 @@ html{
 }
 body{
 	height: 100%;
+	background-color: #14251F;
+	color: #61E8DC;
+	font-family: 'Poppins', sans-serif;
+}
+.container{
+	padding-top: 5vh;
+	padding-bottom: 5vh;
+	height: 100%;
+}
+#contentbox{
+	min-height: 80vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
  .form-check-label{
  	font-size: small;
+ 	display: block;
+	text-align: right;
  }
  /* media lisada, et col-id ei jääks kitsas*/
 .col-sm-4{
@@ -28,27 +44,9 @@ h3{
  	color:black;
  	margin-bottom: 5%;
  }
-
-body{
-	background-color: #14251F;
-	color: #61E8DC;
-	font-family: 'Poppins', sans-serif;
-}
 h5{
 	font-weight: 600;
 	margin-bottom: 5vh;
-}
-
-.container{
-	padding-top: 5vh;
-	padding-bottom: 5vh;
-	height: 100%;
-}
-#contentbox{
-	min-height: 80vh;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
 }
 .green-bg {
 	background-color: #1CBBB4;
@@ -73,24 +71,20 @@ input.form-control, select.form-control, textarea.form-control{
 	border-radius: 0;
 	margin-bottom: 2%;
 	}
-.button{
-	border:none;
-	cursor: pointer;
-	border-radius: 3px;
+#cancelbutton, #nextbutton{
+	float:right;
+	overflow: hidden;
 	color: #fff;
 	background-color: #eb1d5d;
 	font-weight: 400;
-	margin-top:5%;
-	margin-bottom: 5%;
-	margin-left: 5%;
-	float:right;
-}
-button:focus{
-	outline: none;
-}
-label{
-	display: block;
-	text-align: right;
+	margin:5%;
+	margin-top: 35%;
+	cursor: pointer;
+	border-radius: 3px !important;
+	border: none !important;
+    -webkit-appearance: none;
+    padding: 1%;
+	text-decoration: none;
 }
 #pagenumber{
 	margin-top: 5%;
