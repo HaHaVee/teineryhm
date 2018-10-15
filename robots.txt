@@ -1,0 +1,26 @@
+# Rule 1
+User-agent: *
+Disallow: /views/index.html
+
+# Rule 2
+User-agent: *
+Disallow: /views/page2.html
+
+# Rule 3
+User-agent: *
+Disallow: /views/page3.html
+
+# Rule 4
+User-agent: *
+Disallow: /views/page4.html
+
+# Rule 5
+User-agent: *
+Disallow: /views/index(EST).html
+
+# Rule 6
+User-agent: *
+Disallow: /public/
+
+
+Sitemap: https://blooming-mesa-29689.herokuapp.com/sitemap.xml
