@@ -5,8 +5,6 @@ var express = require("express"),
 	bodyParser = require("body-parser"),
 	User = require("./models/user"),
 	LocalStrategy = require("passport-local"),
-	FacebookStrategy = require("passport-facebook").Strategy,
-	configAuth = require("./models/auth"),
 	passportLocalMongoose = require("passport-local-mongoose");
 
 var url = process.env.VRDB || "mongodb://localhost/demo"; //backup 4 good practice
@@ -30,17 +28,6 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 //end
 
-passport.use(new FacebookStrategy({
-    clientID: configAuth.facebookAuth.clientID,
-    clientSecret: configAuth.facebookAuth.clientSecret,
-    callbackURL: configAuth.facebookAuth.callbackURL
-  },
-  function(accessToken, refreshToken, profile, cb) {
-    User.findOrCreate({ facebookId: profile.id }, function (err, user) {
-      return cb(err, user);
-    });
-  }
-));
 
 app.use(express.static(__dirname + "/public"));
 
@@ -99,19 +86,6 @@ app.post("/login", passport.authenticate("local", {
 	failureRedirect: "/login"
 }), function(req, res){
 });
-
-/* FACEBOOK LOGIN */
-app.get('/auth/facebook',
-  passport.authenticate('facebook'));
-
-app.get('/auth/facebook/callback',
-  passport.authenticate('facebook', { failureRedirect: '/login' }),
-  function(req, res) {
-    // Successful authentication, redirect home.
-    res.redirect('/saladus');
-  });
-/* FB LOGIN END */
-
 
 app.get("/logout", function(req, res){
 	req.logout();
