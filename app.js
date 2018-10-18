@@ -5,6 +5,8 @@ var express = require("express"),
 	bodyParser = require("body-parser"),
 	User = require("./models/user"),
 	LocalStrategy = require("passport-local"),
+	FacebookStrategy = require("passport-facebook").Strategy,
+	configAuth = require("./models/auth"),
 	passportLocalMongoose = require("passport-local-mongoose");
 
 var url = process.env.VRDB || "mongodb://localhost/demo"; //backup 4 good practice
@@ -29,13 +31,33 @@ passport.deserializeUser(User.deserializeUser());
 //end
 
 passport.use(new FacebookStrategy({
-    clientID: FACEBOOK_APP_ID,
-    clientSecret: FACEBOOK_APP_SECRET,
-    callbackURL: "/saladus"
+    clientID: configAuth.facebookAuth.clientID,
+    clientSecret: configAuth.facebookAuth.clientSecret,
+    callbackURL: configAuth.facebookAuth.callbackURL
   },
   function(accessToken, refreshToken, profile, cb) {
-    User.findOrCreate({ facebookId: profile.id }, function (err, user) {
-      return cb(err, user);
+    process.nextTick(function(){
+    	User.findOne({'facebook.id' : profile.id}, function(err, user){
+    		if (err){
+    			return done(err);
+    		}
+    		if (user){
+    			return done(null, user);
+    		}
+    		else {
+    			var newUser = new User();
+    			newUser.facebook.id = profile.id;
+    			newUser.facebook.token = accessToken;
+    			newUser.facebook.name = profile.name.givenName + ' ' + profile.name.familyName;
+
+    			newUser.save(function(err){
+    				if (err){
+    					throw err;
+    				}
+    				return done(null, newUser);
+    			});
+    		}
+    	});
     });
   }
 ));
@@ -106,7 +128,8 @@ app.get('/auth/facebook/callback',
   passport.authenticate('facebook', { failureRedirect: '/login' }),
   function(req, res) {
     // Successful authentication, redirect home.
-    res.redirect("/saladus");
+    res.redirect('/saladus');
+  });
 /* FB LOGIN END */
 
 
