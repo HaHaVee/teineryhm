@@ -34,8 +34,18 @@ app.use(express.static(__dirname + "/public"));
 // ROUTES
 // ========================================================
 
+
 app.get("/", function(req, res){
 	res.sendFile(path.join(__dirname+'/views/index.html'));
+});
+app.get("/est", function(req, res){
+	res.sendFile(path.join(__dirname+'/views/index(EST).html'));
+});
+app.get("/robots.txt", function(req, res){
+	res.sendFile(path.join(__dirname+'/robots.txt'));
+});
+app.get("/sitemap.xml", function(req, res){
+	res.sendFile(path.join(__dirname+'/sitemap.xml'));
 });
 app.get("/second", function(req, res){
 	res.sendFile(path.join(__dirname+'/views/page2.html'));
