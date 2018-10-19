@@ -5,13 +5,24 @@ var express = require("express"),
 	bodyParser = require("body-parser"),
 	User = require("./models/user"),
 	LocalStrategy = require("passport-local"),
-	passportLocalMongoose = require("passport-local-mongoose");
+	passportLocalMongoose = require("passport-local-mongoose"),
+	GoogleStrategy = require("passport-google-oauth20");
 
 var url = process.env.VRDB || "mongodb://localhost/demo"; //backup 4 good practice
 mongoose.connect(url);
 
 var app = express();
 app.use(bodyParser.urlencoded({extended: true}));
+
+//google auth
+passport.use(
+	new GoogleStrategy({
+		clientID: '64384883783-kmeidd20r1u2etjgb47k249gjepa49ks.apps.googleusercontent.com',
+		clientSecret: 'NTcc_ypJB-ia1fSuZkVtiHrj'
+	}), () => {
+	// pss
+});
+//end
 
 app.use(require("express-session")({
 	secret: "Mu kutsa nimi on Arro",
@@ -27,6 +38,7 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 //end
+
 
 app.use(express.static(__dirname + "/public"));
 
@@ -108,9 +120,9 @@ function isLoggedIn(req, res, next){
 	res.redirect("/login");
 }
 
-app.get("*", function(req, res){
+/*app.get("*", function(req, res){
 	res.send("Seda lehte ei eksisteeri.");
-});
+});*/
 
 
 var port = process.env.PORT || 80;
