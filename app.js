@@ -18,6 +18,9 @@ mongoose.connect(url);
 }));*/
 
 var app = express();
+
+app.enable("trust proxy");
+
 app.use(bodyParser.urlencoded({extended: true}));
 
 //google auth
