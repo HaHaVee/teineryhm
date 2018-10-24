@@ -71,22 +71,36 @@ input.form-control, select.form-control, textarea.form-control{
 .form-inline{
 	max-width: 50%;
 }
-/* NB margin-bottom */
 .form-inline .form-control {
- max-width: 20%;
+ max-width: 25%;
+ width: 25%;
  margin-bottom: 2%;
  }
- input.form-control.date-ov{
- min-width: 50%;
- width: 56%;
- padding: 6px 12px 6px 12px;
- max-width: 56%;
- margin-bottom: 2%;
+ #rentdate{
+ max-width: 25%;
+ width: 25%;
  }
- #dropdownMenuButton{
- 	max-width: 20%; 
- 	margin-left: 2%;
- 	margin-right: 2%;
+ select{
+ 	max-width: 30%; 
+ 	width: 25%;
+ 	padding:6px 6px 6px 2px;
+ 	margin-left: 12%;
+ 	margin-right: 13%;
+ 	border-radius: 3px;
+ 	background-color: #d9d9d9;
+ }
+ #objectaddress {
+ 	max-width: 70%;
+ 	width: 70%;
+ 	margin-right: 5%; 
+ 	padding: 6px 12px 6px 0;
+    margin-bottom: 2%;
+ }
+ #space{
+ 	max-width: 25%;
+ 	width: 25%;
+ 	padding: 6px 12px 6px 0;
+    margin-bottom: 2%;
  }
 button{
 	border:none;

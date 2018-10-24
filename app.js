@@ -15,13 +15,13 @@ var app = express();
 app.use(bodyParser.urlencoded({extended: true}));
 
 //google auth
-passport.use(
-	new GoogleStrategy({
-		clientID: '64384883783-kmeidd20r1u2etjgb47k249gjepa49ks.apps.googleusercontent.com',
-		clientSecret: 'NTcc_ypJB-ia1fSuZkVtiHrj'
-	}), () => {
+//passport.use(
+	//new GoogleStrategy({
+		//clientID: '64384883783-kmeidd20r1u2etjgb47k249gjepa49ks.apps.googleusercontent.com',
+		//clientSecret: 'NTcc_ypJB-ia1fSuZkVtiHrj'
+	//}), () => {
 	// pss
-});
+//});
 //end
 
 app.use(require("express-session")({
