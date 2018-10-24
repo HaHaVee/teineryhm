@@ -1,12 +1,8 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 	<head>
-<<<<<<< HEAD
 		<title>Securebadger Contract Wizard</title>
-=======
-		<title>Securebadger contract wizard</title>
         <meta name="google-site-verification" content="qZNY32C7AiHEhUEBnWi4uXuaAVdN4ZFzk89ipD_Pk6I" />
->>>>>>> e96f7e38f1da23f880e6258ca1aeef191f9aed32
         <meta charset=utf-8>
         <meta name="description" content="Securebadger contract creation wizard for landlords, who wish to securely rent, and for tenants, who are looking for trustworthy landlords.">
         <meta name="keywords" content="Securebadger, contract creation, contract, tenant, landlord, rent, renting">
@@ -22,7 +18,7 @@
 	<body itemscope itemtype="http://schema.org/WebPage">
  		<div class="container">
             <!--action="/submit.php?action=page1" method="post"-->
-            <form itemscope itemtype="product" name="SecurebadgerWizard" action="/second" onsubmit="return validateForm()">
+            <form itemscope itemtype="http://schema.org/Product" name="SecurebadgerWizard" action="/second" onsubmit="return validateForm()">
  			<h5>S E C U R E B A D G E R</h5>
  			<div id="contentbox">
  				<div class="row">
@@ -51,7 +47,6 @@
                         	<label class="form-check-label" for="fixed-term">
     						Fixed-term
     						</label>
-                        </fieldset>
 
                         <div class="modal fade" id="dateModal" tabindex="-1" role="dialog" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -66,7 +61,7 @@
                                     <label for="expdate">
                                       Enter a date of expiration:
                                     </label>
-                                    <input type="date" required="false" oninvalid="InvalidTerm(this);" oninput="InvalidTerm(this);" id="expdate" class="form-control" name="expdate" min="2000-01-02" max="2020-01-01">
+                                    <input type="date" required oninvalid="InvalidTerm(this);" oninput="InvalidTerm(this);" id="expdate" class="form-control" name="expdate" min="2000-01-02" max="2020-01-01">
                                     <br>
                                   </div>
                                   <div class="modal-footer">
@@ -77,7 +72,9 @@
                               </div>
                         </div>
 
-    				</div>
+    				    </div>
+                        </fieldset>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-4 green-bg">
