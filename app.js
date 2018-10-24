@@ -7,21 +7,55 @@ var express = require("express"),
 	LocalStrategy = require("passport-local"),
 	passportLocalMongoose = require("passport-local-mongoose"),
 	GoogleStrategy = require("passport-google-oauth20");
+	/*cookieSession = require('cookie-session');*/
 
 var url = process.env.VRDB || "mongodb://localhost/demo"; //backup 4 good practice
 mongoose.connect(url);
 
+/*app.use(cookieSession({
+	maxAge: 24*60*60*1000,
+	keys: ['olenhanshaha']
+}));*/
+
 var app = express();
+
+app.enable("trust proxy");
+
 app.use(bodyParser.urlencoded({extended: true}));
 
 //google auth
-//passport.use(
-	//new GoogleStrategy({
-		//clientID: '64384883783-kmeidd20r1u2etjgb47k249gjepa49ks.apps.googleusercontent.com',
-		//clientSecret: 'NTcc_ypJB-ia1fSuZkVtiHrj'
-	//}), () => {
-	// pss
-//});
+passport.serializeUser((user, done) => {
+	done(null, user.id);
+});
+passport.deserializeUser((id, done) => {
+	User.findById(id).then((user) => {
+		done(null, user.id);
+	});
+});
+
+passport.use(
+	new GoogleStrategy({
+		callbackURL: '/auth/google/redirect',
+		clientID: '64384883783-kmeidd20r1u2etjgb47k249gjepa49ks.apps.googleusercontent.com',
+		clientSecret: 'SIIxIJUbqVtc7YgyK4pe4Jaq'
+	}, (accessToken, refreshToken, profile, done) => {
+		User.findOne({googleId: profile.id}).then((currentUser) => {
+			if (currentUser){
+				console.log('user is: ' + currentUser);
+				done(null, currentUser);
+			} else {
+				new User({
+					username: profile.displayName,
+					googleId: profile.id
+				}).save().then((newUser) => {
+						console.log("new user: " + newUser);
+						done(null, newUser);
+				});
+			}
+		});
+
+		
+}));
 //end
 
 app.use(require("express-session")({
@@ -107,6 +141,16 @@ app.post("/login", passport.authenticate("local", {
 	failureRedirect: "/login"
 }), function(req, res){
 });
+
+// google auth
+app.get('/auth/google', passport.authenticate('google', {
+	scope: ['profile']
+}));
+
+app.get('/auth/google/redirect', passport.authenticate('google'), (req, res) => {
+	res.redirect("/saladus");
+});
+// google auth end
 
 app.get("/logout", function(req, res){
 	req.logout();
