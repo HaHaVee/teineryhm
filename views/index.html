@@ -18,7 +18,7 @@
 	<body itemscope itemtype="http://schema.org/WebPage">
  		<div class="container">
             <!--action="/submit.php?action=page1" method="post"-->
-            <form itemscope itemtype="http://schema.org/Product" name="SecurebadgerWizard" action="/second" onsubmit="return validateForm()">
+            <form itemscope itemtype="http://schema.org/Product" name="SecurebadgerWizard" action="/second">
  			<h5>S E C U R E B A D G E R</h5>
  			<div id="contentbox">
  				<div class="row">
@@ -37,13 +37,13 @@
                     <div class="col-sm-8 white-bg">
                         <fieldset>
                     	<div class="form-check form-check-inline">
-                        	<input type="radio" class="form-check-input" id="openend" name="term" onClick="updateNonRequired();">
+                        	<input type="radio" required class="form-check-input" id="openend" name="term" onclick="updateNonRequired();">
                         	<label class="form-check-label" for="openend">
     						Open-ended
     						</label>
     					</div>
     					<div class="form-check form-check-inline">
-                        	<input type="radio" class="form-check-input" onClick="updateRequired();" id="fixed-term" name="term" data-toggle="modal" data-target="#dateModal">
+                        	<input type="radio" class="form-check-input" onclick="updateRequired();" id="fixed-term" name="term" data-toggle="modal" data-target="#dateModal">
                         	<label class="form-check-label" for="fixed-term">
     						Fixed-term
     						</label>
@@ -53,19 +53,16 @@
                                <div class="modal-content">
                                   <div class="modal-header">
                                     <h4 class="end-date" id="end-date">Pick the end-date</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span>
-                                    </button>
                                   </div>
                                   <div class="modal-body">
                                     <label for="expdate">
                                       Enter a date of expiration:
                                     </label>
-                                    <input type="date" required oninvalid="InvalidTerm(this);" oninput="InvalidTerm(this);" id="expdate" class="form-control" name="expdate" min="2000-01-02" max="2020-01-01">
+                                    <input type="date" oninvalid="InvalidTerm(this);" oninput="InvalidTerm(this);" id="expdate" class="form-control" name="expdate" min="2000-01-02" max="2020-01-01">
                                     <br>
                                   </div>
                                   <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="updateNonRequiredCancel();">Close</button>
                                     <button type="button" class="btn btn-primary" onclick="ValidateModal();">Save changes</button>
                                   </div>
                                 </div>

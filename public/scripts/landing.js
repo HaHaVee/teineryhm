@@ -3,21 +3,7 @@ $(function () {
   	container: 'body'
   })
 });
-/*
-$(".dropdown-menu a").click(function(){
-  var selText = $(this).text();
-  $(this).parents('.form-inline').find('.dropdown-toggle').html(selText);
-});*/
 
-function validateForm() {
-    //var term = document.forms["SecurebadgerWizard"]["term"].value;
-    /*
-    if (term = ""){
-    	alert("Term!");
-    	return false;
-    	}*/
-    
-	}
 function InvalidName(textbox) {
     if (textbox.value === '') {
         textbox.setCustomValidity('Required field!');
@@ -78,7 +64,28 @@ function InvalidRentDate(numberbox){
 /*Change expiration date input to required once the fixed term choice is taken, change back when open-ended is chosen*/
 
 function updateRequired() {
- document.getElementById('expdate').setAttribute('required', true);
+ document.getElementById('expdate').required = true;
+ /* Set contract expiration minimum date the current day*/
+
+ var today = new Date();
+ var dd = today.getDate();
+ var mm = today.getMonth()+1; //January is 0!
+ var yyyy = today.getFullYear();
+ if(dd<10){
+        dd='0'+dd
+    } 
+    if(mm<10){
+        mm='0'+mm
+    } 
+
+ today = yyyy+'-'+mm+'-'+dd;
+ document.getElementById("expdate").setAttribute("min", today);
+}
+
+function updateNonRequiredCancel() {
+ document.getElementById('expdate').removeAttribute('required');
+ radiobtn = document.getElementById("openend");
+ radiobtn.checked = true;
 }
 
 function updateNonRequired() {
@@ -106,28 +113,13 @@ function InvalidTerm(datebox) {
 
 function ValidateModal(){
 	if (isFine === true) {
+		 document.getElementById('expdate').removeAttribute('required');
 		$('#dateModal').modal('hide');
 	}
 	else{
 		alert('no no');
 	}
 }
-
-/* Set contract expiration minimum date the current day*/
-
-var today = new Date();
-var dd = today.getDate();
-var mm = today.getMonth()+1; //January is 0!
-var yyyy = today.getFullYear();
- if(dd<10){
-        dd='0'+dd
-    } 
-    if(mm<10){
-        mm='0'+mm
-    } 
-
-today = yyyy+'-'+mm+'-'+dd;
-//document.getElementById("expdate").setAttribute("min", today);
 
 /*Set the contract name automatically to tenant name + object address */
 
