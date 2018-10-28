@@ -19,7 +19,7 @@ mongoose.connect(url);
 
 var app = express();
 
-app.enable("trust proxy");
+app.enable("trust proxy"); //millegipärast on hea
 
 app.use(bodyParser.urlencoded({extended: true}));
 
