@@ -3,7 +3,7 @@ $(function () {
   	container: 'body'
   })
 });
-
+/*functions for checking validity of user input*/
 function InvalidName(textbox) {
     if (textbox.value === '') {
         textbox.setCustomValidity('Required field!');
@@ -98,11 +98,13 @@ var isFine = false;
 function InvalidTerm(datebox) {
 	var date = new Date(datebox.value);
 
-	if (!isNaN(date.getTime())) {
+	if (isNaN(date.getTime())) {
 		datebox.setCustomValidity('Required field!');
+		return true;
 	}
 	else if (datebox.validity.rangeOverflow || datebox.validity.rangeUnderflow){
-		numberbox.setCustomValidity('Date must be between today and 2020-01-01');
+		datebox.setCustomValidity('Date must be between today and 2020-01-01');
+		return true;
 	}
 	else {
 		datebox.setCustomValidity('');

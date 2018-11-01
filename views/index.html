@@ -80,7 +80,7 @@
                         </label>
                     </div>
                     <div class="col-sm-8 white-bg">
-                        <input type="text" pattern="^[^_]([a-zA-Z]{2,}'?(-| )?[a-zA-z]{1,}'?-?[a-zA-Z]{2,} ?([a-zA-Z]{1,})?)" required oninvalid="InvalidName(this);" oninput="InvalidName(this);" maxlength="31" class="form-control" id="ownername">
+                        <input type="text" pattern="^[^_]([a-zA-Z]{2,}'?(-| )?[a-zA-z]{1,}'?-?[a-zA-Z]{2,} ?([a-zA-Z]{1,})?)" required oninvalid="InvalidName(this);" onchange="InvalidName(this);" maxlength="31" class="form-control" id="ownername">
                     </div>
                 </div>
                 <div class="row">
@@ -90,7 +90,7 @@
                         </label>
                     </div>
                     <div class="col-sm-8 white-bg">
-                        <input type="text" pattern="^[^_]([a-zA-Z]{2,}'?(-| )?[a-zA-z]{1,}'?-?[a-zA-Z]{2,} ?([a-zA-Z]{1,})?)"  required oninvalid="InvalidName(this);" oninput="InvalidName(this);" maxlength="31" class="form-control" id="tenantname">
+                        <input type="text" pattern="^[^_]([a-zA-Z]{2,}'?(-| )?[a-zA-z]{1,}'?-?[a-zA-Z]{2,} ?([a-zA-Z]{1,})?)"  required oninvalid="InvalidName(this);" onchange="InvalidName(this);" maxlength="31" class="form-control" id="tenantname">
                     </div>
                 </div>
                 <!--NB-->
@@ -125,7 +125,7 @@
                     </div>
                     <div class="col-sm-8 white-bg">
                         <div class="form-inline">
-                            <input pattern="([a-zA-Z0-9., -]+)" required oninvalid="InvalidAddress(this);" oninput="InvalidAddress(this);" maxlength="50" type="text" class="form-control" id="objectaddress">
+                            <input pattern="([a-zA-Z0-9., -]+)" required oninvalid="InvalidAddress(this);" onchange="InvalidAddress(this);" maxlength="50" type="text" class="form-control" id="objectaddress">
 
                             <input type="number" min="1" max="10000" class="form-control" id="space" name="space" required oninvalid="InvalidSpace(this);" oninput="InvalidSpace(this);">
                         </div>
