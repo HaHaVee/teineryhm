@@ -96,13 +96,13 @@
                 <!--NB-->
                 <div class="row">
                     <div class="col-sm-4 green-bg">
-                        <label for="suminput">
+                        <label for="currency">
                         Rent sum, currency and due date
                         </label>
                     </div>
                     <div class="col-sm-8 white-bg rent">
                         <div class="form-inline">
-                            <input type="number" min="1" max="10000" class="form-control" id="suminput" name="suminput" required oninvalid="InvalidSum(this);" oninput="InvalidSum(this);">
+                            <input type="number" min="1" max="10000" class="form-control" id="suminput" name="suminput" required oninvalid="InvalidSum(this);" oninput="InvalidSum(this);" title="Sum of rent">
 
                             <select id="currency" required>
                               <option value="">None</option>
@@ -111,7 +111,7 @@
                               <option value="gpb">GPB</option>
                             </select>
 
-                            <input type="number" id="rentdate" required oninvalid="InvalidRentDate(this);" oninput="InvalidRentDate(this);" class="form-control" name="rentdate" min="1" max="31">
+                            <input type="number" title="Monthly rent date" id="rentdate" required oninvalid="InvalidRentDate(this);" oninput="InvalidRentDate(this);" class="form-control" name="rentdate" min="1" max="31">
 
                         </div>
                     </div>
@@ -127,7 +127,7 @@
                         <div class="form-inline">
                             <input pattern="([a-zA-Z0-9., -]+)" required oninvalid="InvalidAddress(this);" onchange="InvalidAddress(this);" maxlength="50" type="text" class="form-control" id="objectaddress">
 
-                            <input type="number" min="1" max="10000" class="form-control" id="space" name="space" required oninvalid="InvalidSpace(this);" oninput="InvalidSpace(this);">
+                            <input type="number" min="1" max="10000" class="form-control" id="space" name="space" required oninvalid="InvalidSpace(this);" oninput="InvalidSpace(this);" title="Amount of space">
                         </div>
                     </div>
                 </div>
