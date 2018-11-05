@@ -1,11 +1,21 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"> 
-  <url>
-    <loc>https://blooming-mesa-29689.herokuapp.com/#</loc>
-    <lastmod>2018-10-15</lastmod>
-    <xhtml:link 
-               rel="alternate"
-               hreflang="est"
-               href="https://blooming-mesa-29689.herokuapp.com/est"/>
-  </url>
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:xhtml="https://www.w3.org/1999/xhtml" 
+xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+    http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd
+    http://www.w3.org/1999/xhtml
+    http://www.w3.org/2002/08/xhtml/xhtml1-strict.xsd">
+
+<url>
+<loc>https://blooming-mesa-29689.herokuapp.com/</loc>
+
+<lastmod>2018-10-28T18:12:02+00:00</lastmod>
+<xhtml:link 
+       rel="alternate"
+       hreflang="et"
+       href="https://blooming-mesa-29689.herokuapp.com/est"/>
+</url>
+
 </urlset>

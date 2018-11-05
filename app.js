@@ -87,6 +87,9 @@ app.get("/", function(req, res){
 app.get("/est", function(req, res){
 	res.sendFile(path.join(__dirname+'/views/index(EST).html'));
 });
+app.get("/est2", function(req, res){
+	res.sendFile(path.join(__dirname+'/views/page2(EST).html'));
+});
 app.get("/robots.txt", function(req, res){
 	res.sendFile(path.join(__dirname+'/robots.txt'));
 });
