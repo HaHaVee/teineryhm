@@ -27,19 +27,15 @@ body{
 .col-sm-4{
 	padding-top: 1%;
 }
-.btn-primary-outline {
-  background-color: transparent;
-  border-color: #ccc;
-  color:black;
-  min-width: 25%;
-}
 /*media*/
-.dropdown{
-	padding: 1%;
-}
-.dropdown-item{
-	text-align: center;
-}
+select{
+ 	max-width: 30%; 
+ 	width: 25%;
+ 	padding:6px 6px 6px 2px;
+ 	margin-bottom: 2%;
+ 	border-radius: 3px;
+ 	background-color: #d9d9d9;
+ }
 h3{
  	color:black;
  	margin-bottom: 5%;

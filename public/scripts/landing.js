@@ -119,7 +119,7 @@ function ValidateModal(){
 		$('#dateModal').modal('hide');
 	}
 	else{
-		alert('no no');
+		alert('A date is required!');
 	}
 }
 

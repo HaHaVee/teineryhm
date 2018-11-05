@@ -55,7 +55,7 @@ textarea.form-control.signature{
 .col-sm-4{
 	padding-top: 1%;
 }
-input.form-control, select.form-control{
+input.form-control:disabled{
 	display: block;
 	width: 100%;
 	border: none;

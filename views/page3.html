@@ -17,7 +17,7 @@
 	</head>
 	<body>
  		<div class="container">
-            <form action="#">
+            <form action="/fourth">
  			<h5>S E C U R E B A D G E R</h5>
  			<div id="contentbox">
  				<div class="row">
@@ -30,19 +30,19 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-4 green-bg">
-                        Choose a contract
+                        <label for="contracts">
+                            Choose a contract
+                        </label>
                     </div>
+
+                    <!--contract from db-->
                     <div class="col-sm-8 white-bg">
-                    	<div class="dropdown form-inline">
-                            <button class="btn btn-primary-outline dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            None
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" id="contract1" href="#">Contract 1</a>
-                                <a class="dropdown-item" id="contract2" href="#">Contract 2</a>
-                                <a class="dropdown-item" id="contract3" href="#">Contract 3</a>
-                            </div>
-                        </div>
+                    	<select id="contracts" required>
+                              <option value="">None</option>
+                              <option value="eur">Contract 1</option>
+                              <option value="usd">Contract 2</option>
+                              <option value="gpb">Contract 3</option>
+                        </select>
                     </div>
                 </div>
                 <div class="row">
@@ -52,15 +52,15 @@
                         </label>
                     </div>
                     <div class="col-sm-8 white-bg">
-                        <input type="text" class="form-control" id="tenantEmail">
+                        <input type="email" class="form-control" id="tenantEmail" required oninvalid="InvalidEmail(this);" onchange="InvalidEmail(this);" >
                     </div>
                 </div>
                 <div class="row" id="stretch">
                 	<div class="col-sm-4 green-bg">
                     </div>
                 	<div class="col-sm-8 white-bg" id="buttonstretch">
-                        <a rel="next" href="/fourth" class="button" id="nextbutton">To signing</a>
-                        <a href="/second" class="button" id="cancelbutton">Previous page</a>
+                        <input type="submit" rel="next" value="To signing" class="button" id="nextbutton">                        
+                        <a href="/second" rel="prev" class="button" id="cancelbutton">Previous page</a>
                     </div>
 				</div>
 			</div>
