@@ -1,8 +1,13 @@
 ﻿<!DOCTYPE html>
-<html lang="est">
+<html lang="et">
 	<head>
-		<title>Sihtleht</title>
+		<title>Securebadger Lepingunõustaja</title>
+        <meta name="google-site-verification" content="qZNY32C7AiHEhUEBnWi4uXuaAVdN4ZFzk89ipD_Pk6I" />
         <meta charset=utf-8>
+        <meta name="description" content="Securebadger contract creation wizard for landlords, who wish to securely rent, and for tenants, who are looking for trustworthy landlords.">
+        <meta name="keywords" content="Securebadger, contract creation, contract, tenant, landlord, rent, renting">
+        <meta name="author" content="teineryhm, Securebadger">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link href="https://fonts.googleapis.com/css?family=Poppins:400,600"  rel="stylesheet" type="css/stylesheet">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
@@ -10,9 +15,10 @@
 		<link rel="stylesheet" type="text/css" href="../stylesheets/landing.css">
 
 	</head>
-	<body>
+	<body itemscope itemtype="http://schema.org/WebPage">
  		<div class="container">
-            <form action="#">
+            <!--action="/submit.php?action=page1" method="post"-->
+            <form itemscope itemtype="http://schema.org/Product" name="SecurebadgerWizard" action="/second">
  			<h5>S E C U R E B A D G E R</h5>
  			<div id="contentbox">
  				<div class="row">
@@ -31,42 +37,39 @@
                     <div class="col-sm-8 white-bg">
                         <fieldset>
                     	<div class="form-check form-check-inline">
-                        	<input type="radio" class="form-check-input" id="openend" name="term">
+                        	<input type="radio" required class="form-check-input" id="openend" name="term" onclick="updateNonRequired();">
                         	<label class="form-check-label" for="openend">
-    						Avatud
+    						Tähtajatu
     						</label>
     					</div>
     					<div class="form-check form-check-inline">
-                        	<input type="radio" class="form-check-input" id="fixed-term" name="term" data-toggle="modal" data-target="#dateModal">
+                        	<input type="radio" class="form-check-input" onclick="updateRequired();" id="fixed-term" name="term" data-toggle="modal" data-target="#dateModal">
                         	<label class="form-check-label" for="fixed-term">
-    						Kindel lõppkuupäev
+    						Tähtajaline
     						</label>
 
-                            <div class="modal fade" id="dateModal" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal fade" id="dateModal" tabindex="-1" role="dialog" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                <div class="modal-content">
                                   <div class="modal-header">
-                                    <h4 class="end-date" id="end-date">Vali kuupäev</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span>
-                                    </button>
+                                    <h4 class="end-date" id="end-date">Valige lõppkuupäev</h4>
                                   </div>
-                                  <!-- min ja max vaja genereerida-->
                                   <div class="modal-body">
                                     <label for="expdate">
-                                      Valige lepingu lõpetamise kuupäev
+                                      Sisestage lõppkuupäev:
                                     </label>
-                                    <input type="date" id="expdate" class="form-control" name="date" min="2000-01-02" max="2020-01-01"><br>
+                                    <input type="date" oninvalid="InvalidTerm(this);" oninput="InvalidTerm(this);" id="expdate" class="form-control" name="expdate" min="2000-01-02" max="2020-01-01">
+                                    <br>
                                   </div>
                                   <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Sule</button>
-                                    <button type="button" class="btn btn-primary">Salvesta muudatused</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="updateNonRequiredCancel();">Sulge</button>
+                                    <button type="button" class="btn btn-primary" onclick="ValidateModal();">Salvesta muudatused</button>
                                   </div>
                                 </div>
                               </div>
-                            </div>
+                        </div>
 
-    					</div>
+    				    </div>
                         </fieldset>
                     </div>
                 </div>
@@ -77,7 +80,7 @@
                         </label>
                     </div>
                     <div class="col-sm-8 white-bg">
-                        <input type="text" class="form-control" id="ownername">
+                        <input type="text" pattern="^[^_]([a-zA-Z]{2,}'?(-| )?[a-zA-z]{1,}'?-?[a-zA-Z]{2,} ?([a-zA-Z]{1,})?)" required oninvalid="InvalidName(this);" onchange="InvalidName(this);" maxlength="31" class="form-control" id="ownername">
                     </div>
                 </div>
                 <div class="row">
@@ -87,30 +90,28 @@
                         </label>
                     </div>
                     <div class="col-sm-8 white-bg">
-                        <input type="text" class="form-control" id="tenantname">
+                        <input type="text" pattern="^[^_]([a-zA-Z]{2,}'?(-| )?[a-zA-z]{1,}'?-?[a-zA-Z]{2,} ?([a-zA-Z]{1,})?)"  required oninvalid="InvalidName(this);" onchange="InvalidName(this);" maxlength="31" class="form-control" id="tenantname">
                     </div>
                 </div>
                 <!--NB-->
                 <div class="row">
                     <div class="col-sm-4 green-bg">
-                        <label for="suminput">
-                        Üüri summa
+                        <label for="currency">
+                        Üüri hind, valuuta ja maksekuupäev
                         </label>
                     </div>
                     <div class="col-sm-8 white-bg rent">
                         <div class="form-inline">
-                            <input type="text" class="form-control" id="suminput" name="suminput">
+                            <input type="number" min="1" max="10000" class="form-control" id="suminput" name="suminput" required oninvalid="InvalidSum(this);" oninput="InvalidSum(this);" title="Sum of rent">
 
-                            <button class="btn btn-primary-outline dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            ...
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" id="item1" href="#">EUR</a>
-                                    <a class="dropdown-item" id="item2" href="#">USD</a>
-                                    <a class="dropdown-item" id="item3" href="#">GBP</a>
-                            </div>
+                            <select id="currency" required>
+                              <option value="">Vali</option>
+                              <option value="eur">EUR</option>
+                              <option value="usd">USD</option>
+                              <option value="gpb">GPB</option>
+                            </select>
 
-                            <input type="date" title="Enter a rent due date" class="form-control date-ov" name="rentdate" min="2000-01-02" max="2020-01-01">
+                            <input type="number" title="Monthly rent date" id="rentdate" required oninvalid="InvalidRentDate(this);" oninput="InvalidRentDate(this);" class="form-control" name="rentdate" min="1" max="31">
 
                         </div>
                     </div>
@@ -119,41 +120,44 @@
                 <div class="row">
                     <div class="col-sm-4 green-bg">
                         <label for="objectaddress">                      
-                            Üüripinna aadress
+                            Üüripinna aadress ja üüritav ruum
                         </label>
                     </div>
                     <div class="col-sm-8 white-bg">
-                        <input type="text" class="form-control" id="objectaddress">
+                        <div class="form-inline">
+                            <input pattern="([a-zA-Z0-9., -]+)" required oninvalid="InvalidAddress(this);" onchange="InvalidAddress(this);" maxlength="50" type="text" class="form-control" id="objectaddress">
+
+                            <input type="number" min="1" max="10000" class="form-control" id="space" name="space" required oninvalid="InvalidSpace(this);" oninput="InvalidSpace(this);" title="Amount of space">
+                        </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-4 green-bg">
                         <label for="conditions">
-                        Lisatingimused
+                        Muud tingimused
                         </label>
-                        <button type="button" class="btn-xs btn-info" data-toggle="popover" id="infobtn" title="Näited" data-content="Loomad, lapsed, suitsetamine jne...">!</button>
+                        <button type="button" class="btn-xs btn-info" data-toggle="popover" id="infobtn" title="Examples" data-content="Kas järgmised asjad on lubatud: lapsed, loomad, suitsetamine jne...">!</button>
                     </div>
                     <div class="col-sm-8 white-bg">
-                        <input type="text" class="form-control" id="conditions">
+                        <input type="text" maxlength="100" class="form-control" id="conditions">
                     </div>
                 </div>
-                <!--vaikimisi üürniku nimi+objekti aadress-->
                 <div class="row">
                     <div class="col-sm-4 green-bg">
                         <label for="contractname">
-                        Lepingunimi
+                        Lepingu nimi
                         </label>
                     </div>
                     <div class="col-sm-8 white-bg">
-                        <input type="text" class="form-control" id="contractname">
+                        <input pattern="([a-zA-Z0-9. '-]+)" type="text" class="form-control" id="contractname">
                     </div>
                 </div>
                 <div class="row" id="stretch">
                 	<div class="col-sm-4 green-bg">
                     </div>
                 	<div class="col-sm-8 white-bg">
-                		<button id="cancelbutton" class="button">Tühista</button>
-						<button id="nextbutton" class="button">Salvesta ja edasi</button>
+                        <input type="submit" value="Salvesta ja edasi" class="button" id="nextbutton">
+                        <a href="/" rel="alternate" class="button" id="cancelbutton">Tühista</a>
 				    </div>
 			     </div>
 		      </div>

@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="et">
+	<head>
+		<title>Securebadger Lepingunõustaja</title>
+        <meta charset=utf-8>
+        <meta name="robots" content="noindex">
+        <meta name="description" content="Page 3, Securebadger wizard for contract creation for tenant and landlord">
+        <meta name="keywords" content="Securebadger, contract creation, contract, tenant, landlord, rent">
+        <meta name="author" content="teineryhm, Securebadger">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="https://fonts.googleapis.com/css?family=Poppins:400,600" rel="stylesheet" type="css/stylesheet">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+		<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="../stylesheets/page3.css">
+
+	</head>
+	<body>
+ 		<div class="container">
+            <form action="/fourth">
+ 			<h5>S E C U R E B A D G E R</h5>
+ 			<div id="contentbox">
+ 				<div class="row">
+                    <div class="col-sm-4 green-bg">
+                    </div>
+                    <div class="col-sm-8 white-bg">
+                        <h4 id="pagenumber">3/4</h4>
+						<h3>Üürniku valik</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 green-bg">
+                        <label for="contracts">
+                            Valige leping
+                        </label>
+                    </div>
+
+                    <!--contract from db-->
+                    <div class="col-sm-8 white-bg">
+                    	<select id="contracts" required>
+                              <option value="">Vali</option>
+                              <option value="eur">Leping 1</option>
+                              <option value="usd">Leping 2</option>
+                              <option value="gpb">Leping 3</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 green-bg"> 
+                        <label for="tenantEmail">
+                        Üürniku e-mail
+                        </label>
+                    </div>
+                    <div class="col-sm-8 white-bg">
+                        <input type="email" class="form-control" id="tenantEmail" required oninvalid="InvalidEmail(this);" onchange="InvalidEmail(this);" >
+                    </div>
+                </div>
+                <div class="row" id="stretch">
+                	<div class="col-sm-4 green-bg">
+                    </div>
+                	<div class="col-sm-8 white-bg" id="buttonstretch">
+                        <input type="submit" rel="next" value="To signing" class="button" id="nextbutton">                        
+                        <a href="/second" rel="prev" class="button" id="cancelbutton">Eelmine leht</a>
+                    </div>
+				</div>
+			</div>
+		</form>
+    </div>
+    <script src="../scripts/page3.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	</body>
+</html>
