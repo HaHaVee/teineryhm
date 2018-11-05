@@ -53,7 +53,7 @@ h5{
 .col-sm-4{
 	padding-top: 1%;
 }
-label, legend{
+label{
 	background-color: transparent;
 }
 input.form-control, select.form-control, textarea.form-control{

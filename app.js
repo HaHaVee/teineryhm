@@ -90,6 +90,12 @@ app.get("/est", function(req, res){
 app.get("/est2", function(req, res){
 	res.sendFile(path.join(__dirname+'/views/page2(EST).html'));
 });
+app.get("/est3", function(req, res){
+	res.sendFile(path.join(__dirname+'/views/page3(EST).html'));
+});
+app.get("/est4", function(req, res){
+	res.sendFile(path.join(__dirname+'/views/page4(EST).html'));
+});
 app.get("/robots.txt", function(req, res){
 	res.sendFile(path.join(__dirname+'/robots.txt'));
 });

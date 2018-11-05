@@ -18,7 +18,7 @@
 	<body itemscope itemtype="http://schema.org/WebPage">
  		<div class="container">
             <!--action="/submit.php?action=page1" method="post"-->
-            <form itemscope itemtype="http://schema.org/Product" name="SecurebadgerWizard" action="/second">
+            <form itemscope itemtype="http://schema.org/Product" name="SecurebadgerWizard" action="/est2">
  			<h5>S E C U R E B A D G E R</h5>
  			<div id="contentbox">
  				<div class="row">
@@ -33,19 +33,18 @@
                     <div class="col-sm-4 green-bg">
                         Ajavahemik
                     </div>
-                    <!-- tähtajalise juurde kalender/valik sisestada, modal?-->
                     <div class="col-sm-8 white-bg">
                         <fieldset>
                     	<div class="form-check form-check-inline">
-                        	<input type="radio" required class="form-check-input" id="openend" name="term" onclick="updateNonRequired();">
-                        	<label class="form-check-label" for="openend">
-    						Tähtajatu
-    						</label>
-    					</div>
+                            <input type="radio" oninvalid="InvalidRadio(this);" oninput="InvalidRadio(this);" required class="form-check-input" id="openend" name="term" onclick="updateNonRequired();">
+                            <label class="form-check-label" for="openend">
+                            Täht-ajatu
+                            </label>
+                        </div>
     					<div class="form-check form-check-inline">
-                        	<input type="radio" class="form-check-input" onclick="updateRequired();" id="fixed-term" name="term" data-toggle="modal" data-target="#dateModal">
+                        	<input type="radio" class="form-check-input" oninvalid="InvalidRadio(this);" oninput="InvalidRadio(this);" onclick="updateRequired();" id="fixed-term" name="term" data-toggle="modal" data-target="#dateModal">
                         	<label class="form-check-label" for="fixed-term">
-    						Tähtajaline
+    						Täht-ajaline
     						</label>
 
                         <div class="modal fade" id="dateModal" tabindex="-1" role="dialog" aria-hidden="true">
@@ -136,7 +135,7 @@
                         <label for="conditions">
                         Muud tingimused
                         </label>
-                        <button type="button" class="btn-xs btn-info" data-toggle="popover" id="infobtn" title="Examples" data-content="Kas järgmised asjad on lubatud: lapsed, loomad, suitsetamine jne...">!</button>
+                        <button type="button" class="btn-xs btn-info" data-toggle="popover" id="infobtn" title="Näited" data-content="Kas järgmised asjad on lubatud: lapsed, loomad, suitsetamine jne...">!</button>
                     </div>
                     <div class="col-sm-8 white-bg">
                         <input type="text" maxlength="100" class="form-control" id="conditions">
@@ -163,7 +162,7 @@
 		      </div>
         </form>
  	</div>
-    <script src="../scripts/landing.js"></script>
+    <script src="../scripts/landingest.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 	</body>
