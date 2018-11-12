@@ -18,7 +18,7 @@
 	<body itemscope itemtype="http://schema.org/WebPage">
  		<div class="container">
             <!--action="/submit.php?action=page1" method="post"-->
-            <form itemscope itemtype="http://schema.org/Product" name="SecurebadgerWizard" action="/second">
+            <form method="POST" itemscope itemtype="http://schema.org/Product" name="SecurebadgerWizard" action="/index">
  			<h5>S E C U R E B A D G E R</h5>
  			<div id="contentbox">
  				<div class="row">
@@ -79,7 +79,7 @@
                         </label>
                     </div>
                     <div class="col-sm-8 white-bg">
-                        <input type="text" pattern="^[^_]([a-zA-Z]{2,}'?(-| )?[a-zA-z]{1,}'?-?[a-zA-Z]{2,} ?([a-zA-Z]{1,})?)" required oninvalid="InvalidName(this);" onchange="InvalidName(this);" maxlength="31" class="form-control" id="ownername">
+                        <input type="text" pattern="^[^_]([a-zA-Z]{2,}'?(-| )?[a-zA-z]{1,}'?-?[a-zA-Z]{2,} ?([a-zA-Z]{1,})?)" required oninvalid="InvalidName(this);" onchange="InvalidName(this);" maxlength="31" class="form-control" id="ownername" name="ownername">
                     </div>
                 </div>
                 <div class="row">
@@ -89,7 +89,7 @@
                         </label>
                     </div>
                     <div class="col-sm-8 white-bg">
-                        <input type="text" pattern="^[^_]([a-zA-Z]{2,}'?(-| )?[a-zA-z]{1,}'?-?[a-zA-Z]{2,} ?([a-zA-Z]{1,})?)"  required oninvalid="InvalidName(this);" onchange="InvalidName(this);" maxlength="31" class="form-control" id="tenantname">
+                        <input type="text" pattern="^[^_]([a-zA-Z]{2,}'?(-| )?[a-zA-z]{1,}'?-?[a-zA-Z]{2,} ?([a-zA-Z]{1,})?)"  required oninvalid="InvalidName(this);" onchange="InvalidName(this);" maxlength="31" class="form-control" id="tenantname" name="tenantname">
                     </div>
                 </div>
                 <!--NB-->
@@ -103,7 +103,7 @@
                         <div class="form-inline">
                             <input type="number" min="1" max="10000" class="form-control" id="suminput" name="suminput" required oninvalid="InvalidSum(this);" oninput="InvalidSum(this);" title="Sum of rent">
 
-                            <select id="currency" required>
+                            <select id="currency" required name="currency">
                               <option value="">None</option>
                               <option value="eur">EUR</option>
                               <option value="usd">USD</option>
@@ -124,7 +124,7 @@
                     </div>
                     <div class="col-sm-8 white-bg">
                         <div class="form-inline">
-                            <input pattern="([a-zA-Z0-9., -]+)" required oninvalid="InvalidAddress(this);" onchange="InvalidAddress(this);" maxlength="50" type="text" class="form-control" id="objectaddress">
+                            <input pattern="([a-zA-Z0-9., -]+)" required oninvalid="InvalidAddress(this);" onchange="InvalidAddress(this);" maxlength="50" type="text" class="form-control" id="objectaddress" name="objectaddress">
 
                             <input type="number" min="1" max="10000" class="form-control" id="space" name="space" required oninvalid="InvalidSpace(this);" oninput="InvalidSpace(this);" title="Amount of space">
                         </div>
@@ -138,7 +138,7 @@
                         <button type="button" class="btn-xs btn-info" data-toggle="popover" id="infobtn" title="Examples" data-content="Are the following things allowed: pets, children, smoking etc...">!</button>
                     </div>
                     <div class="col-sm-8 white-bg">
-                        <input type="text" maxlength="100" class="form-control" id="conditions">
+                        <input type="text" maxlength="100" class="form-control" id="conditions" name="conditions">
                     </div>
                 </div>
                 <div class="row">
@@ -148,7 +148,7 @@
                         </label>
                     </div>
                     <div class="col-sm-8 white-bg">
-                        <input pattern="([a-zA-Z0-9. '-]+)" type="text" class="form-control" id="contractname">
+                        <input pattern="([a-zA-Z0-9. '-]+)" type="text" class="form-control" id="contractname" name="contractname">
                     </div>
                 </div>
                 <div class="row" id="stretch">

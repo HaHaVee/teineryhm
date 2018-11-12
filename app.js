@@ -4,6 +4,7 @@ var express = require("express"),
 	passport = require("passport"),
 	bodyParser = require("body-parser"),
 	User = require("./models/user"),
+	Contract = require("./models/contract");
 	LocalStrategy = require("passport-local"),
 	passportLocalMongoose = require("passport-local-mongoose"),
 	GoogleStrategy = require("passport-google-oauth20");
@@ -108,6 +109,24 @@ app.get("/votted", function(req, res){
 });
 app.get("/saladus", isLoggedIn, function(req, res){
 	res.sendFile(path.join(__dirname+'/views/saladus.html'));
+});
+
+app.post("/index", function(req, res){
+	//Contract.register(new Contract({nameOfOwner: req.body.ownername}));
+	var cont = new Contract();
+	cont.nameOfOwner = req.body.ownername;
+	cont.timeFrame = req.body.term;
+	cont.nameOfTenant = req.body.tenantname;
+	cont.rentSumCurrency = req.body.currency;
+	cont.dueDate = req.body.rentdate;
+	cont.objectAddress = req.body.objectaddress;
+	cont.spaceForRent = req.body.rentspace;
+	cont.otherConditions = req.body.conditions;
+	cont.contractName = req.body.contractname;
+
+	cont.save();
+
+	res.redirect("/second");
 });
 
 // Authentication routes
