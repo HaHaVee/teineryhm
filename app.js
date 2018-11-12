@@ -36,8 +36,8 @@ passport.deserializeUser((id, done) => {
 passport.use(
 	new GoogleStrategy({
 		callbackURL: '/auth/google/redirect',
-		clientID: process.env.GCID, //|| '64384883783-kmeidd20r1u2etjgb47k249gjepa49ks.apps.googleusercontent.com',
-		clientSecret: process.env.GCS //|| 'SIIxIJUbqVtc7YgyK4pe4Jaq'
+		clientID: process.env.GCID || '64384883783-kmeidd20r1u2etjgb47k249gjepa49ks.apps.googleusercontent.com',
+		clientSecret: process.env.GCS || 'SIIxIJUbqVtc7YgyK4pe4Jaq'
 	}, (accessToken, refreshToken, profile, done) => {
 		User.findOne({googleId: profile.id}).then((currentUser) => {
 			if (currentUser){
@@ -59,7 +59,7 @@ passport.use(
 //end
 
 app.use(require("express-session")({
-	secret: process.env.localsecret, //|| 'Mu kutsa nimi on Arro',
+	secret: process.env.localsecret || 'Mu kutsa nimi on arro',
 	resave: false,
 	saveUninitialized: false
 }));
@@ -86,15 +86,6 @@ app.get("/", function(req, res){
 });
 app.get("/est", function(req, res){
 	res.sendFile(path.join(__dirname+'/views/index(EST).html'));
-});
-app.get("/est2", function(req, res){
-	res.sendFile(path.join(__dirname+'/views/page2(EST).html'));
-});
-app.get("/est3", function(req, res){
-	res.sendFile(path.join(__dirname+'/views/page3(EST).html'));
-});
-app.get("/est4", function(req, res){
-	res.sendFile(path.join(__dirname+'/views/page4(EST).html'));
 });
 app.get("/robots.txt", function(req, res){
 	res.sendFile(path.join(__dirname+'/robots.txt'));
