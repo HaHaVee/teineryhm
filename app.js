@@ -113,7 +113,7 @@ app.get("/saladus", isLoggedIn, function(req, res){
 
 app.post("/index", function(req, res){
 	//Contract.register(new Contract({nameOfOwner: req.body.ownername}));
-	var cont = new Contract();
+	/*var cont = new Contract();
 	cont.nameOfOwner = req.body.ownername;
 	cont.timeFrame = req.body.term;
 	cont.nameOfTenant = req.body.tenantname;
@@ -123,8 +123,22 @@ app.post("/index", function(req, res){
 	cont.spaceForRent = req.body.rentspace;
 	cont.otherConditions = req.body.conditions;
 	cont.contractName = req.body.contractname;
-
-	cont.save();
+	cont.save();*/
+	new Contract({
+		nameOfOwner : req.body.ownername,
+		timeFrame : req.body.term,
+		nameOfTenant : req.body.tenantname,
+		rentSumCurrency : req.body.currency,
+		dueDate : req.body.rentdate,
+		objectAddress : req.body.objectaddress,
+		spaceForRent : req.body.rentspace,
+		otherConditions : req.body.conditions,
+		contractName : req.body.contractname
+	}).save(function(err, doc){
+		if (err){
+			res.json(err);
+		} else res.send("Success");
+	});
 
 	res.redirect("/second");
 });
