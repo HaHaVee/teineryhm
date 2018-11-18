@@ -8,6 +8,10 @@ var express = require("express"),
 	LocalStrategy = require("passport-local"),
 	passportLocalMongoose = require("passport-local-mongoose"),
 	GoogleStrategy = require("passport-google-oauth20");
+	fs = require('fs');
+	pdf = require('html-pdf');
+	html = fs.readFileSync('./views/index.html', 'utf8');
+	options = { format: 'A4' };
 	/*cookieSession = require('cookie-session');*/
 
 var url = process.env.VRDB || "mongodb://localhost/demo"; //backup 4 good practice
@@ -111,7 +115,10 @@ app.get("/saladus", isLoggedIn, function(req, res){
 	res.sendFile(path.join(__dirname+'/views/saladus.html'));
 });
 
-app.post("/index", function(req, res){
+	
+const { check, validationResult } = require('express-validator/check');
+app.post("/index", [ check('ownername').isLength({ max: 31 }), check('tenantname').isLength({ max: 31})
+], function(req, res) {
 	//Contract.register(new Contract({nameOfOwner: req.body.ownername}));
 	/*var cont = new Contract();
 	cont.nameOfOwner = req.body.ownername;
@@ -124,6 +131,10 @@ app.post("/index", function(req, res){
 	cont.otherConditions = req.body.conditions;
 	cont.contractName = req.body.contractname;
 	cont.save();*/
+	const errors = validationResult(req);
+	if (!errors.isEmpty()) {
+		return res.status(422).json({ errors: errors.array() });
+	}
 	new Contract({
 		nameOfOwner : req.body.ownername,
 		timeFrame : req.body.term,
@@ -137,10 +148,9 @@ app.post("/index", function(req, res){
 	}).save(function(err, doc){
 		if (err){
 			res.json(err);
-		} else res.send("Success");
+		} else res.status(200);
+		res.redirect("/second");
 	});
-
-	res.redirect("/second");
 });
 
 // Authentication routes

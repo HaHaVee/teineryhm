@@ -132,3 +132,8 @@ $("#tenantname, #objectaddress").keyup(function(){
 function update() {
   $("#contractname").val($('#tenantname').val() + "-" + $('#objectaddress').val());
 }
+
+function save_name() {
+	var contractname = document.getElementById('contractname').value;
+	localStorage.setItem("ContractName",contractname);
+}
