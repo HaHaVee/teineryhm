@@ -225,9 +225,11 @@ app.post("/", [ check('ownername').isLength({ max: 31 }), check('tenantname').is
 			} else res.status(200);
 			var objectId = doc._id;
 			 var string = encodeURIComponent(objectId);
-			
-			var opened = window.open("");
-			( "#content" ).load( ".(files/template.html div#esimeneLõik" );
+			/*
+			var doc = document.implementation.createDocument ('', 'html', null);
+			var body = document.createElementNS('http://www.w3.org/1999/xhtml', 'body');
+			body.setAttribute('id', 'abc');
+			doc.documentElement.appendChild(body);*/
 			
 			pdf.create(html, options).toFile('./files/lamp.pdf', function(err, res) {
 			  if (err) return console.log(err);
