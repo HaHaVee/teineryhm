@@ -10,8 +10,11 @@ var express = require("express"),
 	GoogleStrategy = require("passport-google-oauth20");
 	fs = require('fs');
 	pdf = require('html-pdf');
-	html = fs.readFileSync('./views/index.html', 'utf8');
+	html = fs.readFileSync('./files/template.html', 'utf8');
 	options = { format: 'A4' };
+	XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+    xhr = new XMLHttpRequest();
+	
 	/*cookieSession = require('cookie-session');*/
 
 var url = process.env.VRDB || "mongodb://localhost/demo"; //backup 4 good practice
@@ -57,9 +60,7 @@ passport.use(
 						done(null, newUser);
 				});
 			}
-		});
-
-		
+		});	
 }));
 //end
 
@@ -107,6 +108,13 @@ app.get("/third", function(req, res){
 app.get("/fourth", function(req, res){
 	res.sendFile(path.join(__dirname+'/views/page4.html'));
 });
+	app.get("/template", function(req, res){
+	res.sendFile(path.join(__dirname+'/files/template.html'));
+});
+app.get("/lamp.pdf", function(req, res){
+	res.sendFile(path.join(__dirname+'/files/lamp.pdf'));
+});
+	
 
 app.get("/votted", function(req, res){
 	res.sendFile(path.join(__dirname+'/views/votted.html'));
@@ -115,44 +123,124 @@ app.get("/saladus", isLoggedIn, function(req, res){
 	res.sendFile(path.join(__dirname+'/views/saladus.html'));
 });
 
+
+	//create html get function
+	
+	function getBody(content) 
+{
+   test = content.toLowerCase();    // to eliminate case sensitivity
+   var x = test.indexOf("<body");
+   if(x == -1) return "";
+
+   x = test.indexOf(">", x);
+   if(x == -1) return "";
+
+   var y = test.lastIndexOf("</body>");
+   if(y == -1) y = test.lastIndexOf("</html>");
+   if(y == -1) y = content.length;    // If no HTML then just grab everything till end
+
+   return content.slice(x + 1, y);   
+} 
+
+function loadHTML(url, fun, storage, param)
+{
+	var xhr = createXHR();
+	xhr.onreadystatechange=function()
+	{ 
+		if(xhr.readyState == 4)
+		{
+			//if(xhr.status == 200)
+			{
+				storage.innerHTML = getBody(xhr.responseText);
+				fun(storage, param);
+			}
+		} 
+	}; 
+
+	xhr.open("GET", url , true);
+	xhr.send(null); 
+
+} 
+
+	function processHTML(temp, target)
+	{
+		target.innerHTML = temp.innerHTML;
+	}
+
+	function loadWholePage(url)
+	{
+		var y = document.getElementById("storage");
+		var x = document.getElementById("displayed");
+		loadHTML(url, processHTML, x, y);
+	}	
+	
+	function processByDOM(responseHTML, target)
+	{
+		target.innerHTML = "Extracted by id:<br />";
+
+		// does not work with Chrome/Safari
+		//var message = responseHTML.getElementsByTagName("div").namedItem("two").innerHTML;
+		var message = responseHTML.getElementsByTagName("div").item(1).innerHTML;
+		
+		target.innerHTML += message;
+
+		target.innerHTML += "<br />Extracted by name:<br />";
+		
+		message = responseHTML.getElementsByTagName("form").item(0);
+		target.innerHTML += message.dyn.value;
+	}
+	
+	function accessByDOM(url)
+	{
+		//var responseHTML = document.createElement("body");	// Bad for opera
+		var responseHTML = document.getElementById("storage");
+		var y = document.getElementById("displayed");
+		loadHTML(url, processByDOM, responseHTML, y);
+	}	
+
 	
 const { check, validationResult } = require('express-validator/check');
 app.post("/", [ check('ownername').isLength({ max: 31 }), check('tenantname').isLength({ max: 31})
 ], function(req, res) {
-	//Contract.register(new Contract({nameOfOwner: req.body.ownername}));
-	/*var cont = new Contract();
-	cont.nameOfOwner = req.body.ownername;
-	cont.timeFrame = req.body.term;
-	cont.nameOfTenant = req.body.tenantname;
-	cont.rentSumCurrency = req.body.currency;
-	cont.dueDate = req.body.rentdate;
-	cont.objectAddress = req.body.objectaddress;
-	cont.spaceForRent = req.body.rentspace;
-	cont.otherConditions = req.body.conditions;
-	cont.contractName = req.body.contractname;
-	cont.save();*/
 	const errors = validationResult(req);
 	if (!errors.isEmpty()) {
 		return res.status(422).json({ errors: errors.array() });
 	}
 	else{ 
-	new Contract({
-		nameOfOwner : req.body.ownername,
-		timeFrame : req.body.term,
-		nameOfTenant : req.body.tenantname,
-		rentSumCurrency : req.body.currency,
-		dueDate : req.body.rentdate,
-		objectAddress : req.body.objectaddress,
-		spaceForRent : req.body.rentspace,
-		otherConditions : req.body.conditions,
-		contractName : req.body.contractname
-	}).save(function(err, doc){
-		if (err){
-			res.json(err);
-		} else res.status(200);
-		res.redirect("/second");
-	});
+		var newContract =new Contract({
+			nameOfOwner : req.body.ownername,
+			timeFrame : req.body.term,
+			nameOfTenant : req.body.tenantname,
+			rentSumCurrency : req.body.currency,
+			dueDate : req.body.rentdate,
+			objectAddress : req.body.objectaddress,
+			spaceForRent : req.body.rentspace,
+			otherConditions : req.body.conditions,
+			contractName : req.body.contractname
+		});
+		
+		newContract.save(function(err, doc){
+			if (err){
+				res.json(err);
+			} else res.status(200);
+			var objectId = doc._id;
+			 var string = encodeURIComponent(objectId);
+			
+			var opened = window.open("");
+			( "#content" ).load( ".(files/template.html div#esimeneLõik" );
+			
+			pdf.create(html, options).toFile('./files/lamp.pdf', function(err, res) {
+			  if (err) return console.log(err);
+			  console.log(res); // { filename: '/app/businesscard.pdf' }
+			});
+			 res.redirect('/second?id=' + string);
+		});
 	}
+});
+
+app.get('/second', function(req, res) {
+  var passedVariable = req.query.id;
+  console.log(passedVariable);
 });
 
 // Authentication routes
