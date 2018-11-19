@@ -117,7 +117,7 @@ app.get("/saladus", isLoggedIn, function(req, res){
 
 	
 const { check, validationResult } = require('express-validator/check');
-app.post("/index", [ check('ownername').isLength({ max: 31 }), check('tenantname').isLength({ max: 31})
+app.post("/", [ check('ownername').isLength({ max: 31 }), check('tenantname').isLength({ max: 31})
 ], function(req, res) {
 	//Contract.register(new Contract({nameOfOwner: req.body.ownername}));
 	/*var cont = new Contract();
@@ -135,6 +135,7 @@ app.post("/index", [ check('ownername').isLength({ max: 31 }), check('tenantname
 	if (!errors.isEmpty()) {
 		return res.status(422).json({ errors: errors.array() });
 	}
+	else{ 
 	new Contract({
 		nameOfOwner : req.body.ownername,
 		timeFrame : req.body.term,
@@ -151,6 +152,7 @@ app.post("/index", [ check('ownername').isLength({ max: 31 }), check('tenantname
 		} else res.status(200);
 		res.redirect("/second");
 	});
+	}
 });
 
 // Authentication routes
