@@ -17,7 +17,7 @@
 	</head>
 	<body>
  		<div class="container">
-            <form action="/fourth">
+            <form action="/third" method="post">
  			<h5>S E C U R E B A D G E R</h5>
  			<div id="contentbox">
  				<div class="row">
@@ -37,7 +37,7 @@
 
                     <!--contract from db-->
                     <div class="col-sm-8 white-bg">
-                    	<select id="contracts" required>
+                    	<select id="contracts" name="contracts" required>
                               <option value="">None</option>
                               <option value="eur">Contract 1</option>
                               <option value="usd">Contract 2</option>
@@ -52,7 +52,7 @@
                         </label>
                     </div>
                     <div class="col-sm-8 white-bg">
-                        <input type="email" class="form-control" id="tenantEmail" required oninvalid="InvalidEmail(this);" onchange="InvalidEmail(this);" >
+                        <input type="email" class="form-control" id="tenantEmail" name="tenantEmail" required oninvalid="InvalidEmail(this);" onchange="InvalidEmail(this);" >
                     </div>
                 </div>
                 <div class="row" id="stretch">

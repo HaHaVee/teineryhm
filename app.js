@@ -14,6 +14,7 @@ var express = require("express"),
 	options = { format: 'A4' };
 	XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
     xhr = new XMLHttpRequest();
+	nodemailer = require('nodemailer');
 	
 	/*cookieSession = require('cookie-session');*/
 
@@ -240,10 +241,68 @@ app.post("/", [ check('ownername').isLength({ max: 31 }), check('tenantname').is
 	}
 });
 
-app.get('/second', function(req, res) {
-  var passedVariable = req.query.id;
-  console.log(passedVariable);
-});
+app.post("/third", [ check('tenantEmail').isEmail()], function(req, res) {
+	const errors = validationResult(req);
+	if (!errors.isEmpty()) {
+		return res.status(422).json({ errors: errors.array() });
+	}
+	else{ 		
+		var tenantEmail = req.body.tenantEmail;
+		var text = 'Hello, this is me';
+		var mailOptions = {
+		    from: 'richardonnis@gmail.com', // sender address
+		    to: tenantEmail, // list of receivers
+		    subject: 'Email Example', // Subject line
+		    text: text 
+		};
+		var transporter = nodemailer.createTransport({
+        service: 'Gmail',
+        auth: {
+            user: 'richardonnis@gmail.com', 
+            pass: 'Lostorospor16' 
+        		}
+		});
+		transporter.sendMail(mailOptions, function(error, info){
+		    if(error){
+		        console.log(error);
+		        res.json({yo: 'error'});
+		    }else{
+		        console.log('Message sent: ' + info.response);
+		        res.json({yo: info.response});
+		    };
+		});
+
+		res.redirect('/fourth');
+		}});
+
+function handleEmail (req, res) {
+	var tenantEmail = req.body.tenantEmail;
+		var text = 'Hello, this is me';
+		var mailOptions = {
+		    from: 'morehuethanyou@gmail.com>', // sender address
+		    to: tenantEmail, // list of receivers
+		    subject: 'Email Example', // Subject line
+		    text: text 
+		};
+		var transporter = nodemailer.createTransport({
+        service: 'Gmail',
+        auth: {
+            user: 'morehuethanyou@gmail.com', 
+            pass: 'Onnis9876' 
+        		}
+		});
+		transporter.sendMail(mailOptions, function(error, info){
+		    if(error){
+		        console.log(error);
+		        res.json({yo: 'error'});
+		    }else{
+		        console.log('Message sent: ' + info.response);
+		        res.json({yo: info.response});
+		    };
+		});
+}
+
+
 
 // Authentication routes
 // show sign up form
