@@ -24,6 +24,7 @@
         "express": "^4.16.3",
         "express-session": "^1.15.6",
         "express-validator": "^5.3.0",
+        "handlebars": "^4.0.12",
         "html-pdf": "^2.2.0",
         "mongoose": "^5.3.2",
         "nodemailer": "^4.7.0",

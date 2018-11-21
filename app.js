@@ -10,12 +10,8 @@ var express = require("express"),
 	GoogleStrategy = require("passport-google-oauth20");
 	fs = require('fs');
 	pdf = require('html-pdf');
-	html = fs.readFileSync('./files/template.html', 'utf8');
-	options = { format: 'A4' };
-	XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
-    xhr = new XMLHttpRequest();
 	nodemailer = require('nodemailer');
-	
+	handlebars = require('handlebars');
 	/*cookieSession = require('cookie-session');*/
 
 var url = process.env.VRDB || "mongodb://localhost/demo"; //backup 4 good practice
@@ -115,7 +111,34 @@ app.get("/fourth", function(req, res){
 app.get("/lamp.pdf", function(req, res){
 	res.sendFile(path.join(__dirname+'/files/lamp.pdf'));
 });
+app.get("/contractgen",  async function(req, res){
+	var id = req.query.id;
+	console.log(id);
+	var htmlname = path.join(__dirname+'/files/'+id+'.html');
+	var infile = path.join(__dirname+'/views/template.html');
+	var dateobj = new Date(); //format!
+		
+	let ctr = await Contract.findById(id);
+	console.log(ctr);
 	
+	var source = fs.readFileSync(infile, 'utf8');	
+	var template = handlebars.compile(source);
+	var data = { "üürnik": ctr.nameOfTenant, "üürileandja": ctr.nameOfOwner, "täna": dateobj, "aadress": ctr.objectAddress, 
+	"rendiruum": 'XXX', "tähtaeg": ctr.dueDate };
+	var result = template(data);
+	
+	fs.writeFile(htmlname, result, function(err) {
+    if(err) {
+        return console.log(err);
+    		}		
+	});
+	
+	html = fs.readFileSync(htmlname, 'utf8');
+	pdf.create(html).toBuffer(function(err, buffer){
+	res.type('application/pdf');
+	res.send(buffer);
+		});
+	});
 
 app.get("/votted", function(req, res){
 	res.sendFile(path.join(__dirname+'/views/votted.html'));
@@ -123,82 +146,6 @@ app.get("/votted", function(req, res){
 app.get("/saladus", isLoggedIn, function(req, res){
 	res.sendFile(path.join(__dirname+'/views/saladus.html'));
 });
-
-
-	//create html get function
-	
-	function getBody(content) 
-{
-   test = content.toLowerCase();    // to eliminate case sensitivity
-   var x = test.indexOf("<body");
-   if(x == -1) return "";
-
-   x = test.indexOf(">", x);
-   if(x == -1) return "";
-
-   var y = test.lastIndexOf("</body>");
-   if(y == -1) y = test.lastIndexOf("</html>");
-   if(y == -1) y = content.length;    // If no HTML then just grab everything till end
-
-   return content.slice(x + 1, y);   
-} 
-
-function loadHTML(url, fun, storage, param)
-{
-	var xhr = createXHR();
-	xhr.onreadystatechange=function()
-	{ 
-		if(xhr.readyState == 4)
-		{
-			//if(xhr.status == 200)
-			{
-				storage.innerHTML = getBody(xhr.responseText);
-				fun(storage, param);
-			}
-		} 
-	}; 
-
-	xhr.open("GET", url , true);
-	xhr.send(null); 
-
-} 
-
-	function processHTML(temp, target)
-	{
-		target.innerHTML = temp.innerHTML;
-	}
-
-	function loadWholePage(url)
-	{
-		var y = document.getElementById("storage");
-		var x = document.getElementById("displayed");
-		loadHTML(url, processHTML, x, y);
-	}	
-	
-	function processByDOM(responseHTML, target)
-	{
-		target.innerHTML = "Extracted by id:<br />";
-
-		// does not work with Chrome/Safari
-		//var message = responseHTML.getElementsByTagName("div").namedItem("two").innerHTML;
-		var message = responseHTML.getElementsByTagName("div").item(1).innerHTML;
-		
-		target.innerHTML += message;
-
-		target.innerHTML += "<br />Extracted by name:<br />";
-		
-		message = responseHTML.getElementsByTagName("form").item(0);
-		target.innerHTML += message.dyn.value;
-	}
-	
-	function accessByDOM(url)
-	{
-		//var responseHTML = document.createElement("body");	// Bad for opera
-		var responseHTML = document.getElementById("storage");
-		var y = document.getElementById("displayed");
-		loadHTML(url, processByDOM, responseHTML, y);
-	}	
-
 	
 const { check, validationResult } = require('express-validator/check');
 app.post("/", [ check('ownername').isLength({ max: 31 }), check('tenantname').isLength({ max: 31})
@@ -226,16 +173,6 @@ app.post("/", [ check('ownername').isLength({ max: 31 }), check('tenantname').is
 			} else res.status(200);
 			var objectId = doc._id;
 			 var string = encodeURIComponent(objectId);
-			/*
-			var doc = document.implementation.createDocument ('', 'html', null);
-			var body = document.createElementNS('http://www.w3.org/1999/xhtml', 'body');
-			body.setAttribute('id', 'abc');
-			doc.documentElement.appendChild(body);*/
-			
-			pdf.create(html, options).toFile('./files/lamp.pdf', function(err, res) {
-			  if (err) return console.log(err);
-			  console.log(res); // { filename: '/app/businesscard.pdf' }
-			});
 			 res.redirect('/second?id=' + string);
 		});
 	}
@@ -252,7 +189,7 @@ app.post("/third", [ check('tenantEmail').isEmail()], function(req, res) {
 		var mailOptions = {
 		    from: 'richardonnis@gmail.com', // sender address
 		    to: tenantEmail, // list of receivers
-		    subject: 'Email Example', // Subject line
+		    subject: 'SecureBadger Rental Contract Signing', // Subject line
 		    text: text 
 		};
 		var transporter = nodemailer.createTransport({
@@ -274,35 +211,6 @@ app.post("/third", [ check('tenantEmail').isEmail()], function(req, res) {
 
 		res.redirect('/fourth');
 		}});
-
-function handleEmail (req, res) {
-	var tenantEmail = req.body.tenantEmail;
-		var text = 'Hello, this is me';
-		var mailOptions = {
-		    from: 'morehuethanyou@gmail.com>', // sender address
-		    to: tenantEmail, // list of receivers
-		    subject: 'Email Example', // Subject line
-		    text: text 
-		};
-		var transporter = nodemailer.createTransport({
-        service: 'Gmail',
-        auth: {
-            user: 'morehuethanyou@gmail.com', 
-            pass: 'Onnis9876' 
-        		}
-		});
-		transporter.sendMail(mailOptions, function(error, info){
-		    if(error){
-		        console.log(error);
-		        res.json({yo: 'error'});
-		    }else{
-		        console.log('Message sent: ' + info.response);
-		        res.json({yo: info.response});
-		    };
-		});
-}
-
-
 
 // Authentication routes
 // show sign up form
