@@ -8,11 +8,13 @@ var express = require("express"),
 	ContractList = require("./models/contractList");
 	LocalStrategy = require("passport-local"),
 	passportLocalMongoose = require("passport-local-mongoose"),
-	GoogleStrategy = require("passport-google-oauth20");
-	fs = require('fs');
-	pdf = require('html-pdf');
-	nodemailer = require('nodemailer');
-	handlebars = require('handlebars');
+	GoogleStrategy = require("passport-google-oauth20"),
+	fs = require('fs'),
+	pdf = require('html-pdf'),
+	nodemailer = require('nodemailer'),
+	handlebars = require('handlebars'),
+	crypto = require('crypto'),
+	fetch = require('node-fetch');
 	/*cookieSession = require('cookie-session');*/
 
 var url = process.env.VRDB || "mongodb://localhost/demo"; //backup 4 good practice
@@ -280,6 +282,66 @@ app.get('/auth/google/redirect', passport.authenticate('google'), (req, res) => 
 app.get("/logout", function(req, res){
 	req.logout();
 	res.redirect("/votted");
+});
+
+app.post("/smartid", async (req, res) => {
+  var isikukood = req.body.isikukood;
+  var riik = req.body.riik;
+  console.log(isikukood +" " +riik);
+  const buf = crypto.randomBytes(32);
+  const hash = crypto.createHash("sha256");
+  hash.update(buf);
+  hashString = hash.digest("base64");
+  fetch(
+    `https://sid.demo.sk.ee/smart-id-rp/v1/authentication/pno/${riik}/${isikukood}`,
+    {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        relyingPartyUUID: "00000000-0000-0000-0000-000000000000",
+        relyingPartyName: "DEMO",
+        certificateLevel: "QUALIFIED",
+        hashType: "SHA256",
+        hash: hashString
+      })
+    }
+  )
+    .then(result => {
+      if (result.status === 200) {
+        return result.json();
+      } else {
+        console.log("Error");
+        throw new Error("Error");
+      }
+    })
+    .then(result => {
+      const sessionID = result.sessionID;
+      fetch(`https://sid.demo.sk.ee/smart-id-rp/v1/session/${sessionID}`, {
+        method: "GET"
+      })
+        .then(result => {
+          if (result.status === 200) {
+            return result.json();
+          } else {
+            console.log("Error");
+            throw new Error("Error");
+          }
+        })
+        .then(result => {
+          if (result.state === "COMPLETE" && result.result.endResult === "OK") {
+            req.session.isLoggedIn = true;
+            res.json({ isLoggedIn: Boolean(req.session.isLoggedIn) });
+          }
+        });
+    })
+    .catch(err => {
+      console.log(err);
+      req.session.isLoggedIn = false;
+      res.json({ isLoggedIn: Boolean(req.session.isLoggedIn) });
+    });
 });
 
 function isLoggedIn(req, res, next){
