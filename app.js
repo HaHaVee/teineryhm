@@ -5,6 +5,7 @@ var express = require("express"),
 	bodyParser = require("body-parser"),
 	User = require("./models/user"),
 	Contract = require("./models/contract");
+	ContractList = require("./models/contractList");
 	LocalStrategy = require("passport-local"),
 	passportLocalMongoose = require("passport-local-mongoose"),
 	GoogleStrategy = require("passport-google-oauth20");
@@ -113,13 +114,12 @@ app.get("/lamp.pdf", function(req, res){
 });
 app.get("/contractgen",  async function(req, res){
 	var id = req.query.id;
-	console.log(id);
 	var htmlname = path.join(__dirname+'/files/'+id+'.html');
 	var infile = path.join(__dirname+'/views/template.html');
+	var pdfname = path.join(__dirname+'/files/'+id+'.pdf');
 	var dateobj = new Date(); //format!
 		
 	let ctr = await Contract.findById(id);
-	console.log(ctr);
 	
 	var source = fs.readFileSync(infile, 'utf8');	
 	var template = handlebars.compile(source);
@@ -127,17 +127,39 @@ app.get("/contractgen",  async function(req, res){
 	"rendiruum": 'XXX', "tähtaeg": ctr.dueDate };
 	var result = template(data);
 	
-	fs.writeFile(htmlname, result, function(err) {
+	fs.writeFileSync(htmlname, result, function(err) {
     if(err) {
-        return console.log(err);
+        console.log(err);
+        return;
     		}		
 	});
-	
-	html = fs.readFileSync(htmlname, 'utf8');
-	pdf.create(html).toBuffer(function(err, buffer){
-	res.type('application/pdf');
-	res.send(buffer);
+	var html;
+
+	try {
+		html = fs.readFileSync(htmlname, 'utf8');
+	} catch (err) {
+		console.log(err);
+		return;
+	}
+	//var html = fs.readFileSync(htmlname, 'utf8');
+
+	var htmlin = await pdf.create(html);
+	await htmlin.toFile(pdfname, function(err, data) {
+		if (err) {
+			console.log(err);
+			return;
+		}	console.log("Sendind data file");
+
+			res.sendFile(pdfname);
+
+  		console.log(data); // { filename: '/app/businesscard.pdf' }
 		});
+/*	fs.readFile(pdfname , function (err,data){
+        res.contentType("application/pdf");
+        res.send(data);
+    	});
+	res.end();*/
+
 	});
 
 app.get("/votted", function(req, res){
@@ -166,6 +188,7 @@ app.post("/", [ check('ownername').isLength({ max: 31 }), check('tenantname').is
 			otherConditions : req.body.conditions,
 			contractName : req.body.contractname
 		});
+
 		
 		newContract.save(function(err, doc){
 			if (err){
