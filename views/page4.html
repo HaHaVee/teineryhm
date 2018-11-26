@@ -17,7 +17,7 @@
 	</head>
 <body>
  	<div class="container">
-        <form action="#">
+        <!--<form action="#">-->
  			<h5>S E C U R E B A D G E R</h5>
  			<div id="contentbox">
  				<div class="row">
@@ -108,18 +108,27 @@
                     </div>
                 </div>
                 <!-- sign muutub inactiveks kui juba signitud-->
+                <div>
+                    <form method="POST" name="auth" action="/smartid">
+                        <input type="text" name="riik" id="riik">
+                        <label for="riik">Riik</label>
+
+                        <input type="text" name="isikukood" id="isikukood">
+                        <label for="Isikukood">Isikukood</label>
+                    
+                </div>
                 <div class="row">
                 	<div class="col-sm-4 green-bg">
                     </div>
                 	<div class="col-sm-8 white-bg">
-                        <a rel="next" href="#" class="button" id="nextbutton">Sign the contract</a>
+                        <input value="Sign the contract" class="button" id="nextbutton" type="submit"></input>
                         <a href="#" class="button" id="cancelbutton">Cancel</a>
+                        </form>
 				    </div>
 			     </div>
 		      </div>
-          </form>
+          <!--</form>-->
  	</div>
- 	<!--
-		<script src="../scripts/landing.js" type="text/javascript"></script>-->
+		<script src="../scripts/page4.js" type="text/javascript"></script>
 	</body>
 </html>
