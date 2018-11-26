@@ -100,7 +100,16 @@ app.get("/sitemap.xml", function(req, res){
 	res.sendFile(path.join(__dirname+'/sitemap.xml'));
 });
 app.get("/second", function(req, res){
-	res.sendFile(path.join(__dirname+'/views/page2.html'));
+	var id = req.query.id;
+	var infile = path.join(__dirname+'/views/page2.html');
+		var source = fs.readFileSync(infile, 'utf8');	
+			var template = handlebars.compile(source);
+			var data = {'ID': id};
+			var result = template(data);
+			res.send(result);
+
+
+	//res.sendFile(path.join(__dirname+'/views/page2.html'));
 });
 app.get("/third", function(req, res){
 	res.sendFile(path.join(__dirname+'/views/page3.html'));
