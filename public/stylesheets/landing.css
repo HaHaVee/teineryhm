@@ -21,7 +21,7 @@ body{
  	font-size: small;
 
  }
- input[type=radio] {
+input[type=radio] {
     border: 0px;
     width: 100%;
     height: 1em;
@@ -56,7 +56,7 @@ h5{
 label{
 	background-color: transparent;
 }
-input.form-control, select.form-control, textarea.form-control{
+input.form-control, select.form-control{
 	display: block;
 	width: 50%;
 	border: none;
@@ -107,7 +107,7 @@ button{
 	cursor: pointer;
 	border-radius: 3px;
 }
-button:focus{
+button:focus, a:focus{
 	outline: none;
 }
 .btn-info{
@@ -129,29 +129,27 @@ label.form-check-label{
 .modal-content{
 	color: black;
 }
-#cancelbutton, #nextbutton{
-	float:right;
-	overflow: hidden;
-	color: #fff;
-	background-color: #eb1d5d;
-	font-weight: 400;
-	margin:5%;
-	border:none;
-	cursor: pointer;
-	border-radius: 3px;
-}
+
 .button{
 	border-radius: 3px !important;
 	border: none !important;
     -webkit-appearance: none;
     padding: 1%;
 	text-decoration: none;
+	float:right;
+	overflow: hidden;
+	color: #fff;
+	background-color: #eb1d5d;
+	font-weight: 400;
+	margin:5%;
+	cursor: pointer;
 }
 #stretch{
 	height:100%;
 	flex:1;
 }
-a:hover {
+a:hover, button:hover {
     text-decoration: none;
+    color: white;
 }
 
