@@ -1,8 +1,8 @@
 var mongoose = require("mongoose");
-var Schema =mongoose.Schema;
+//var Schema =mongoose.Schema;
 //var passportLocalMongoose = require("passport-local-mongoose");
 
-var contractListSchema = new Schema({
+var contractListSchema = new mongoose.Schema({
 	nameOfOwner: String,
 	contracts: [Schema.Types.ObjectId]
 });
