@@ -159,7 +159,7 @@ app.get("/contractgen",  async function(req, res){
 		if (err) {
 			console.log(err);
 			return;
-		}	console.log("Sendind data file");
+		}
 
 			res.sendFile(pdfname);
 
