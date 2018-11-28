@@ -9,7 +9,10 @@
         <meta name="author" content="teineryhm, Securebadger">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link href="https://fonts.googleapis.com/css?family=Poppins:400,600" rel="stylesheet" type="css/stylesheet">
-		<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+		<script
+		  src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		  integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+		  crossorigin="anonymous"></script>
 		<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="../stylesheets/page2.css">
 		<link rel="alternate" href="../views/index(EST).html">
@@ -38,7 +41,7 @@
                     <div class="col-sm-8 white-bg">
                         <!-- #toolbar=0&navpanes=0&scrollbar=0 on vaja genereeritava failinime taha lisada-->
 							<div class="embed-responsive embed-responsive-21by9" itemscope itemtype="http://schema.org/DigitalDocument">
-								<embed class="embed-responsive-item" src="/contractgen?id={{ID}}" type="application/pdf" title="Contract">
+								<embed class="embed-responsive-item" src="/contractgen?id={{ID}}#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" title="Contract">
 							</div>
                     </div>
                 </div>
@@ -53,9 +56,5 @@
 				</div>
 			</div>
 		</div>
-		
-
-	
-		<script src="../scripts/page2.js"></script>
 	</body>
 </html>
