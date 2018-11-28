@@ -14,7 +14,8 @@ var express = require("express"),
 	nodemailer = require('nodemailer'),
 	handlebars = require('handlebars'),
 	crypto = require('crypto'),
-	fetch = require('node-fetch');
+	fetch = require('node-fetch'),
+	compression = require('compression');
 	/*cookieSession = require('cookie-session');*/
 
 var url = process.env.VRDB || "mongodb://localhost/demo"; //backup 4 good practice
@@ -30,6 +31,7 @@ var app = express();
 app.enable("trust proxy"); //millegipärast on hea
 
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(compression());
 
 //google auth
 passport.serializeUser((user, done) => {
@@ -88,7 +90,8 @@ app.use(express.static(__dirname + "/public"));
 
 
 app.get("/", function(req, res){
-	res.sendFile(path.join(__dirname+'/views/index.html'));
+	res.setHeader('Cache-Control', 'private, max-age=25920');
+ 	res.sendFile(path.join(__dirname+'/views/index.html'));
 });
 app.get("/est", function(req, res){
 	res.sendFile(path.join(__dirname+'/views/index(EST).html'));
@@ -100,6 +103,7 @@ app.get("/sitemap.xml", function(req, res){
 	res.sendFile(path.join(__dirname+'/sitemap.xml'));
 });
 app.get("/second", function(req, res){
+	res.setHeader('Cache-Control', 'private, max-age=25920');
 	var id = req.query.id;
 	var infile = path.join(__dirname+'/views/page2.html');
 		var source = fs.readFileSync(infile, 'utf8');	
@@ -112,16 +116,12 @@ app.get("/second", function(req, res){
 	//res.sendFile(path.join(__dirname+'/views/page2.html'));
 });
 app.get("/third", function(req, res){
+	res.setHeader('Cache-Control', 'private, max-age=25920');
 	res.sendFile(path.join(__dirname+'/views/page3.html'));
 });
 app.get("/fourth", function(req, res){
+	res.setHeader('Cache-Control', 'private, max-age=25920');
 	res.sendFile(path.join(__dirname+'/views/page4.html'));
-});
-	app.get("/template", function(req, res){
-	res.sendFile(path.join(__dirname+'/files/template.html'));
-});
-app.get("/lamp.pdf", function(req, res){
-	res.sendFile(path.join(__dirname+'/files/lamp.pdf'));
 });
 app.get("/contractgen",  async function(req, res){
 	var id = req.query.id;
