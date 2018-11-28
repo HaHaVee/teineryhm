@@ -1,170 +1,171 @@
-﻿<html lang="en">
-	<head>
-		<title>Securebadger Contract Wizard</title>
-        <meta name="google-site-verification" content="qZNY32C7AiHEhUEBnWi4uXuaAVdN4ZFzk89ipD_Pk6I" />
-        <meta charset=utf-8>
-        <meta name="description" content="Securebadger contract creation wizard for landlords, who wish to securely rent, and for tenants, who are looking for trustworthy landlords.">
-        <meta name="keywords" content="Securebadger, contract creation, contract, tenant, landlord, rent, renting">
-        <meta name="author" content="teineryhm, Securebadger">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link href="https://fonts.googleapis.com/css?family=Poppins:400,600"  rel="stylesheet" type="css/stylesheet">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-          integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
-          crossorigin="anonymous"></script>
-  		<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="../stylesheets/landing.css">
+﻿<!DOCTYPE html>
+    <html lang="en">
+    	<head>
+    		<title>Securebadger Contract Wizard</title>
+            <meta name="google-site-verification" content="qZNY32C7AiHEhUEBnWi4uXuaAVdN4ZFzk89ipD_Pk6I" />
+            <meta charset=utf-8>
+            <meta name="description" content="Securebadger contract creation wizard for landlords, who wish to securely rent, and for tenants, who are looking for trustworthy landlords.">
+            <meta name="keywords" content="Securebadger, contract creation, contract, tenant, landlord, rent, renting">
+            <meta name="author" content="teineryhm, Securebadger">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    		<link href="https://fonts.googleapis.com/css?family=Poppins:400,600"  rel="stylesheet" type="css/stylesheet">
+    		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+              integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+              crossorigin="anonymous"></script>
+      		<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    		<link rel="stylesheet" type="text/css" href="../stylesheets/landing.css">
 
-	</head>
-	<body itemscope itemtype="http://schema.org/WebPage">
- 		<div class="container">
-            <!--action="/submit.php?action=page1" method="post"-->
-            <form method="POST" itemscope itemtype="http://schema.org/Product" name="SecurebadgerWizard" action="/">
- 			<h5>S E C U R E B A D G E R</h5>
- 			<div id="contentbox">
- 				<div class="row">
-                    <div class="col-sm-4 green-bg">
+    	</head>
+    	<body itemscope itemtype="http://schema.org/WebPage">
+     		<div class="container">
+                <!--action="/submit.php?action=page1" method="post"-->
+                <form method="POST" itemscope itemtype="http://schema.org/Product" name="SecurebadgerWizard" action="/">
+     			<h5>S E C U R E B A D G E R</h5>
+     			<div id="contentbox">
+     				<div class="row">
+                        <div class="col-sm-4 green-bg">
+                        </div>
+                        <div class="col-sm-8 white-bg">
+                            <h4 id="pagenumber">1/4</h4>
+    						<h3>Contract creation</h3>
+                        </div>
                     </div>
-                    <div class="col-sm-8 white-bg">
-                        <h4 id="pagenumber">1/4</h4>
-						<h3>Contract creation</h3>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-4 green-bg">
-                        Timeframe 
-                    </div>
-                    <div class="col-sm-8 white-bg">
-                        <fieldset>
-                    	<div class="form-check form-check-inline">
-                        	<input type="radio" required class="form-check-input" id="openend" name="term" onclick="updateNonRequired();">
-                        	<label class="form-check-label" for="openend">
-    						Open-ended
-    						</label>
-    					</div>
-    					<div class="form-check form-check-inline">
-                        	<input type="radio" class="form-check-input" onclick="updateRequired();" id="fixed-term" name="term" data-toggle="modal" data-target="#dateModal">
-                        	<label class="form-check-label" for="fixed-term">
-    						Fixed-term
-    						</label>
+                    <div class="row">
+                        <div class="col-sm-4 green-bg">
+                            Timeframe 
+                        </div>
+                        <div class="col-sm-8 white-bg">
+                            <fieldset>
+                        	<div class="form-check form-check-inline">
+                            	<input type="radio" required class="form-check-input" id="openend" name="term" onclick="updateNonRequired();">
+                            	<label class="form-check-label" for="openend">
+        						Open-ended
+        						</label>
+        					</div>
+        					<div class="form-check form-check-inline">
+                            	<input type="radio" class="form-check-input" onclick="updateRequired();" id="fixed-term" name="term" data-toggle="modal" data-target="#dateModal">
+                            	<label class="form-check-label" for="fixed-term">
+        						Fixed-term
+        						</label>
 
-                        <div class="modal fade" id="dateModal" tabindex="-1" role="dialog" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                               <div class="modal-content">
-                                  <div class="modal-header">
-                                    <h4 class="end-date" id="end-date">Pick the end-date</h4>
+                            <div class="modal fade" id="dateModal" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                   <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h4 class="end-date" id="end-date">Pick the end-date</h4>
+                                      </div>
+                                      <div class="modal-body">
+                                        <label for="expdate">
+                                          Enter a date of expiration:
+                                        </label>
+                                        <input type="date" oninvalid="InvalidTerm(this);" oninput="InvalidTerm(this);" id="expdate" class="form-control" name="expdate" min="2000-01-02" max="2020-01-01">
+                                        <br>
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="updateNonRequiredCancel();">Close</button>
+                                        <button type="button" class="btn btn-primary" onclick="ValidateModal();">Save changes</button>
+                                      </div>
+                                    </div>
                                   </div>
-                                  <div class="modal-body">
-                                    <label for="expdate">
-                                      Enter a date of expiration:
-                                    </label>
-                                    <input type="date" oninvalid="InvalidTerm(this);" oninput="InvalidTerm(this);" id="expdate" class="form-control" name="expdate" min="2000-01-02" max="2020-01-01">
-                                    <br>
-                                  </div>
-                                  <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="updateNonRequiredCancel();">Close</button>
-                                    <button type="button" class="btn btn-primary" onclick="ValidateModal();">Save changes</button>
-                                  </div>
-                                </div>
-                              </div>
+                            </div>
+
+        				    </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4 green-bg">
+                            <label for="ownername">
+                            Name of owner
+                            </label>
+                        </div>
+                        <div class="col-sm-8 white-bg">
+                            <input type="text" pattern="^[^_]([a-zA-Z]{2,}'?(-| )?[a-zA-z]{1,}'?-?[a-zA-Z]{2,} ?([a-zA-Z]{1,})?)" required oninvalid="InvalidName(this);" onchange="InvalidName(this);" maxlength="31" class="form-control" id="ownername" name="ownername">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4 green-bg">
+                            <label for="tenantname">
+                            Name of tenant
+                            </label>
+                        </div>
+                        <div class="col-sm-8 white-bg">
+                            <input type="text" pattern="^[^_]([a-zA-Z]{2,}'?(-| )?[a-zA-z]{1,}'?-?[a-zA-Z]{2,} ?([a-zA-Z]{1,})?)"  required oninvalid="InvalidName(this);" onchange="InvalidName(this);" maxlength="31" class="form-control" id="tenantname" name="tenantname">
+                        </div>
+                    </div>
+                    <!--NB-->
+                    <div class="row">
+                        <div class="col-sm-4 green-bg">
+                            <label for="currency">
+                            Rent sum, currency and due date
+                            </label>
+                        </div>
+                        <div class="col-sm-8 white-bg rent">
+                            <div class="form-inline">
+                                <input type="number" min="1" max="10000" class="form-control" id="suminput" name="suminput" required oninvalid="InvalidSum(this);" oninput="InvalidSum(this);" title="Sum of rent">
+
+                                <select id="currency" required name="currency">
+                                  <option value="">None</option>
+                                  <option value="eur">EUR</option>
+                                  <option value="usd">USD</option>
+                                  <option value="gpb">GPB</option>
+                                </select>
+
+                                <input type="number" title="Monthly rent date" id="rentdate" required oninvalid="InvalidRentDate(this);" oninput="InvalidRentDate(this);" class="form-control" name="rentdate" min="1" max="31">
+
+                            </div>
                         </div>
 
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4 green-bg">
+                            <label for="objectaddress">                      
+                                Object address and space for rent
+                            </label>
+                        </div>
+                        <div class="col-sm-8 white-bg">
+                            <div class="form-inline">
+                                <input pattern="([a-zA-Z0-9., -]+)" required oninvalid="InvalidAddress(this);" onchange="InvalidAddress(this);" maxlength="50" type="text" class="form-control" id="objectaddress" name="objectaddress">
+
+                                <input type="number" min="1" max="10000" class="form-control" id="space" name="space" required oninvalid="InvalidSpace(this);" oninput="InvalidSpace(this);" title="Amount of space">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4 green-bg">
+                            <label for="conditions">
+                            Other conditions
+                            </label>
+                            <button type="button" class="btn-xs btn-info" data-toggle="popover" id="infobtn" title="Examples" data-content="Are the following things allowed: pets, children, smoking etc...">!</button>
+                        </div>
+                        <div class="col-sm-8 white-bg">
+                            <input type="text" maxlength="100" class="form-control" id="conditions" name="conditions">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4 green-bg">
+                            <label for="contractname">
+                            Contract name
+                            </label>
+                        </div>
+                        <div class="col-sm-8 white-bg">
+                            <input pattern="([a-zA-Z0-9. '-]+)" type="text" class="form-control" id="contractname" name="contractname">
+                        </div>
+                    </div>
+                    <div class="row" id="stretch">
+                    	<div class="col-sm-4 green-bg">
+                        </div>
+                    	<div class="col-sm-8 white-bg">
+                            <input type="submit" value="Save & next" class="button" id="nextbutton">
+                            <a href="/" rel="alternate" class="button" id="cancelbutton">Cancel</a>
     				    </div>
-                        </fieldset>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-4 green-bg">
-                        <label for="ownername">
-                        Name of owner
-                        </label>
-                    </div>
-                    <div class="col-sm-8 white-bg">
-                        <input type="text" pattern="^[^_]([a-zA-Z]{2,}'?(-| )?[a-zA-z]{1,}'?-?[a-zA-Z]{2,} ?([a-zA-Z]{1,})?)" required oninvalid="InvalidName(this);" onchange="InvalidName(this);" maxlength="31" class="form-control" id="ownername" name="ownername">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-4 green-bg">
-                        <label for="tenantname">
-                        Name of tenant
-                        </label>
-                    </div>
-                    <div class="col-sm-8 white-bg">
-                        <input type="text" pattern="^[^_]([a-zA-Z]{2,}'?(-| )?[a-zA-z]{1,}'?-?[a-zA-Z]{2,} ?([a-zA-Z]{1,})?)"  required oninvalid="InvalidName(this);" onchange="InvalidName(this);" maxlength="31" class="form-control" id="tenantname" name="tenantname">
-                    </div>
-                </div>
-                <!--NB-->
-                <div class="row">
-                    <div class="col-sm-4 green-bg">
-                        <label for="currency">
-                        Rent sum, currency and due date
-                        </label>
-                    </div>
-                    <div class="col-sm-8 white-bg rent">
-                        <div class="form-inline">
-                            <input type="number" min="1" max="10000" class="form-control" id="suminput" name="suminput" required oninvalid="InvalidSum(this);" oninput="InvalidSum(this);" title="Sum of rent">
-
-                            <select id="currency" required name="currency">
-                              <option value="">None</option>
-                              <option value="eur">EUR</option>
-                              <option value="usd">USD</option>
-                              <option value="gpb">GPB</option>
-                            </select>
-
-                            <input type="number" title="Monthly rent date" id="rentdate" required oninvalid="InvalidRentDate(this);" oninput="InvalidRentDate(this);" class="form-control" name="rentdate" min="1" max="31">
-
-                        </div>
-                    </div>
-
-                </div>
-                <div class="row">
-                    <div class="col-sm-4 green-bg">
-                        <label for="objectaddress">                      
-                            Object address and space for rent
-                        </label>
-                    </div>
-                    <div class="col-sm-8 white-bg">
-                        <div class="form-inline">
-                            <input pattern="([a-zA-Z0-9., -]+)" required oninvalid="InvalidAddress(this);" onchange="InvalidAddress(this);" maxlength="50" type="text" class="form-control" id="objectaddress" name="objectaddress">
-
-                            <input type="number" min="1" max="10000" class="form-control" id="space" name="space" required oninvalid="InvalidSpace(this);" oninput="InvalidSpace(this);" title="Amount of space">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-4 green-bg">
-                        <label for="conditions">
-                        Other conditions
-                        </label>
-                        <button type="button" class="btn-xs btn-info" data-toggle="popover" id="infobtn" title="Examples" data-content="Are the following things allowed: pets, children, smoking etc...">!</button>
-                    </div>
-                    <div class="col-sm-8 white-bg">
-                        <input type="text" maxlength="100" class="form-control" id="conditions" name="conditions">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-4 green-bg">
-                        <label for="contractname">
-                        Contract name
-                        </label>
-                    </div>
-                    <div class="col-sm-8 white-bg">
-                        <input pattern="([a-zA-Z0-9. '-]+)" type="text" class="form-control" id="contractname" name="contractname">
-                    </div>
-                </div>
-                <div class="row" id="stretch">
-                	<div class="col-sm-4 green-bg">
-                    </div>
-                	<div class="col-sm-8 white-bg">
-                        <input type="submit" value="Save & next" class="button" id="nextbutton">
-                        <a href="/" rel="alternate" class="button" id="cancelbutton">Cancel</a>
-				    </div>
-			     </div>
-		      </div>
-        </form>
- 	</div>
-    <script async src="../scripts/landing.js"></script>
-    <script async src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script async src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-	</body>
+    			     </div>
+    		      </div>
+            </form>
+     	</div>
+        <script async src="../scripts/landing.js"></script>
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script async src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    	</body>
 </html>
