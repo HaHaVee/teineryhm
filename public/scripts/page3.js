@@ -1,1 +1,1 @@
-function InvalidName(t){return""===t.value?t.setCustomValidity("Required field!"):t.validity.patternMismatch?t.setCustomValidity("Must be an email!"):t.setCustomValidity(""),!0}
+function InvalidEmail(t){return""===t.value?t.setCustomValidity("Required field!"):t.validity.patternMismatch?t.setCustomValidity("Must be an email!"):t.setCustomValidity(""),!0}
