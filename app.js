@@ -364,7 +364,6 @@ function isLoggedIn(req, res, next){
 	res.send("Seda lehte ei eksisteeri.");
 });*/
 
-
 var port = process.env.PORT || 80;
 var host = "0.0.0.0";
 app.listen(port, host, function() {

@@ -34,6 +34,7 @@
         "passport-google-oauth20": "^1.0.0",
         "passport-local": "^1.0.0",
         "passport-local-mongoose": "^5.0.1",
+        "selenium-webdriver": "^4.0.0-alpha.1",
         "xmlhttprequest": "^1.8.0"
     }
 }
