@@ -1,0 +1,14 @@
+language: node_js
+
+node_js:
+  - 'node'
+
+addons:
+  chrome: stable
+
+before_script:
+  - npm run build
+
+cache:
+  directories:
+    - node_modules

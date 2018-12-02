@@ -4,7 +4,7 @@
     "description": "2018 S aine \"Veebirakendused\" teise ryhma teine ryhm.",
     "main": "app.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
+        "test": "wdio",
         "start": "node app.js"
     },
     "repository": {
@@ -34,7 +34,12 @@
         "passport-google-oauth20": "^1.0.0",
         "passport-local": "^1.0.0",
         "passport-local-mongoose": "^5.0.1",
-        "selenium-webdriver": "^4.0.0-alpha.1",
         "xmlhttprequest": "^1.8.0"
+    },
+    "devDependencies": {
+        "wdio-mocha-framework": "^0.6.4",
+        "wdio-selenium-standalone-service": "0.0.11",
+        "wdio-spec-reporter": "^0.1.5",
+        "webdriverio": "^4.14.1"
     }
 }
