@@ -230,8 +230,8 @@ app.post("/third", [ check('tenantEmail').isEmail()], function(req, res) {
 		var transporter = nodemailer.createTransport({
         service: 'Gmail',
         auth: {
-            user: process.env.VRun || 'kolizei.annaabi@gmail.com', 
-            pass: process.env.VRpw || 'aiv637pedekass'
+            user: process.env.VRun, 
+            pass: process.env.VRpw
         		}
 		});
 		transporter.sendMail(mailOptions, function(error, info){

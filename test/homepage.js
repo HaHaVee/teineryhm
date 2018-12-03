@@ -1,5 +1,6 @@
 var assert = require('assert');
 
+/*
 describe('Securebadger homepage', function(){
 	it('Has the right title', function(){
 		browser.url('/');
@@ -68,6 +69,7 @@ describe('/third', function(){
 		assert.equal(pagenumber, '4/4');
 	});
 });
+*/
 
 describe('/login', function(){
 	it('Cannot login with random username and password', function(){
@@ -87,11 +89,11 @@ describe('/login', function(){
 		browser.pause(6000);
 
 		//set your username as the second parameter
-		browser.setValue('input[id="identifierId"]', process.env.VRun || 'kolizei.annaabi@gmail.com');
+		browser.setValue('input[id="identifierId"]', process.env.VRun);
 		browser.click('div[id="identifierNext"]');
 		browser.pause(3000);
 		//set your password as the second parameter
-		browser.setValue('input[type="password"]', process.env.VRpw || 'aiv637pedekass');
+		browser.setValue('input[type="password"]', process.env.VRpw);
 		browser.click('div[id="passwordNext"]');
 		browser.pause(3000);
 
