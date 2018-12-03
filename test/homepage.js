@@ -79,7 +79,7 @@ describe('/login', function(){
 		assert.equal(url, 'https://blooming-mesa-29689.herokuapp.com/login');
 	});
 
-	it('Loging in with Google account redirects to "/saladus" while Google account is not saved', function(){
+	it('Logging in with Google account redirects to "/saladus" while Google account is not saved', function(){
 		// User does not need to be logged in.
 		// User has to input their username and password, then click "Next".
 		browser.url('/login');
@@ -87,11 +87,11 @@ describe('/login', function(){
 		browser.pause(6000);
 
 		//set your username as the second parameter
-		browser.setValue('input[id="identifierId"]', 'kolizei.annaabi');
+		browser.setValue('input[id="identifierId"]', process.env.VRun);
 		browser.click('div[id="identifierNext"]');
 		browser.pause(3000);
 		//set your password as the second parameter
-		browser.setValue('input[type="password"]', '');
+		browser.setValue('input[type="password"]', process.env.VRpw);
 		browser.click('div[id="passwordNext"]');
 		browser.pause(3000);
 
@@ -99,7 +99,7 @@ describe('/login', function(){
 		assert.equal(title, "Saladus");
 	});
 
-	it('Loging in with Google account redirect to "/saladus" while Google account is saved', function(){
+	it('Logging in with Google account redirect to "/saladus" while Google account is saved', function(){
 		// User needs to be logged into Google account
 		// so that user could be redirected straight into "/saladus"
 		browser.url('/saladus');
