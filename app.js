@@ -33,6 +33,11 @@ app.enable("trust proxy");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(compression());
 
+app.use(function(req,res,next){
+	res.setHeader('Cache-Control', 'private, max-age=2592000');
+	next();
+});
+
 //google auth
 passport.serializeUser((user, done) => {
 	done(null, user.id);
@@ -90,7 +95,6 @@ app.use(express.static(__dirname + "/public"));
 
 
 app.get("/", function(req, res){
-	res.setHeader('Cache-Control', 'private, max-age=2592000');
  	res.sendFile(path.join(__dirname+'/views/index.html'));
 });
 app.get("/est", function(req, res){
@@ -103,7 +107,6 @@ app.get("/sitemap.xml", function(req, res){
 	res.sendFile(path.join(__dirname+'/sitemap.xml'));
 });
 app.get("/second", function(req, res){
-	res.setHeader('Cache-Control', 'private, max-age=2592000');
 	var id = req.query.id;
 	var infile = path.join(__dirname+'/views/page2.html');
 		var source = fs.readFileSync(infile, 'utf8');	
@@ -116,11 +119,9 @@ app.get("/second", function(req, res){
 	//res.sendFile(path.join(__dirname+'/views/page2.html'));
 });
 app.get("/third", function(req, res){
-	res.setHeader('Cache-Control', 'private, max-age=2592000');
 	res.sendFile(path.join(__dirname+'/views/page3.html'));
 });
 app.get("/fourth", function(req, res){
-	res.setHeader('Cache-Control', 'private, max-age=2592000');
 	res.sendFile(path.join(__dirname+'/views/page4.html'));
 });
 app.get("/contractgen",  async function(req, res){
