@@ -222,7 +222,7 @@ app.post("/third", [ check('tenantEmail').isEmail()], function(req, res) {
 		var tenantEmail = req.body.tenantEmail;
 		var text = 'Hello, this is me';
 		var mailOptions = {
-		    from: VRun, // sender address
+		    from: process.env.VRun, // sender address
 		    to: tenantEmail, // list of receivers
 		    subject: 'SecureBadger Rental Contract Signing', // Subject line
 		    text: text 
