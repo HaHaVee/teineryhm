@@ -87,11 +87,11 @@ describe('/login', function(){
 		browser.pause(6000);
 
 		//set your username as the second parameter
-		browser.setValue('input[id="identifierId"]', process.env.VRun);
+		browser.setValue('input[id="identifierId"]', process.env.VRun || 'kolizei.annaabi@gmail.com');
 		browser.click('div[id="identifierNext"]');
 		browser.pause(3000);
 		//set your password as the second parameter
-		browser.setValue('input[type="password"]', process.env.VRpw);
+		browser.setValue('input[type="password"]', process.env.VRpw || 'aiv637pedekass');
 		browser.click('div[id="passwordNext"]');
 		browser.pause(3000);
 

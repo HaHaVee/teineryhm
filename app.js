@@ -222,7 +222,7 @@ app.post("/third", [ check('tenantEmail').isEmail()], function(req, res) {
 		var tenantEmail = req.body.tenantEmail;
 		var text = 'Hello, this is me';
 		var mailOptions = {
-		    from: process.env.VRun, // sender address
+		    from: process.env.VRun || 'kolizei.annaabi@gmail.com', // sender address
 		    to: tenantEmail, // list of receivers
 		    subject: 'SecureBadger Rental Contract Signing', // Subject line
 		    text: text 
@@ -230,8 +230,8 @@ app.post("/third", [ check('tenantEmail').isEmail()], function(req, res) {
 		var transporter = nodemailer.createTransport({
         service: 'Gmail',
         auth: {
-            user: process.env.VRun, 
-            pass: process.env.VRpw 
+            user: process.env.VRun || 'kolizei.annaabi@gmail.com', 
+            pass: process.env.VRpw || 'aiv637pedekass'
         		}
 		});
 		transporter.sendMail(mailOptions, function(error, info){
