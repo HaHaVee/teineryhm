@@ -109,14 +109,11 @@ app.get("/sitemap.xml", function(req, res){
 app.get("/second", function(req, res){
 	var id = req.query.id;
 	var infile = path.join(__dirname+'/views/page2.html');
-		var source = fs.readFileSync(infile, 'utf8');	
-			var template = handlebars.compile(source);
-			var data = {'ID': id};
-			var result = template(data);
-			res.send(result);
-
-
-	//res.sendFile(path.join(__dirname+'/views/page2.html'));
+	var source = fs.readFileSync(infile, 'utf8');	
+	var template = handlebars.compile(source);
+	var data = {'ID': id};
+	var result = template(data);
+	res.send(result);
 });
 app.get("/third", function(req, res){
 	res.sendFile(path.join(__dirname+'/views/page3.html'));
@@ -130,12 +127,21 @@ app.get("/contractgen",  async function(req, res){
 	var infile = path.join(__dirname+'/views/template.html');
 	var pdfname = path.join(__dirname+'/files/'+id+'.pdf');
 	var dateobj = new Date(); //format!
-		
+	var dd = dateobj.getDate();
+	var mm = dateobj.getMonth() + 1; //January is 0!
+
+	var yyyy = dateobj.getFullYear();
+	if (dd < 10) {
+	  dd = '0'+dd;
+	} 
+	if (mm < 10) {mm = '0'+mm;} 
+	var today = dd + '/' + mm + '/' + yyyy;
+
 	let ctr = await Contract.findById(id);
 	
 	var source = fs.readFileSync(infile, 'utf8');	
 	var template = handlebars.compile(source);
-	var data = { "üürnik": ctr.nameOfTenant, "üürileandja": ctr.nameOfOwner, "täna": dateobj, "aadress": ctr.objectAddress, 
+	var data = { "üürnik": ctr.nameOfTenant, "üürileandja": ctr.nameOfOwner, "täna": today, "aadress": ctr.objectAddress, 
 	"rendiruum": 'XXX', "tähtaeg": ctr.dueDate };
 	var result = template(data);
 	
@@ -161,17 +167,9 @@ app.get("/contractgen",  async function(req, res){
 			console.log(err);
 			return;
 		}
-
 			res.sendFile(pdfname);
-
-  		console.log(data); // { filename: '/app/businesscard.pdf' }
+  		console.log(data); 
 		});
-/*	fs.readFile(pdfname , function (err,data){
-        res.contentType("application/pdf");
-        res.send(data);
-    	});
-	res.end();*/
-
 	});
 
 app.get("/votted", function(req, res){
@@ -200,15 +198,14 @@ app.post("/", [ check('ownername').isLength({ max: 31 }), check('tenantname').is
 			otherConditions : req.body.conditions,
 			contractName : req.body.contractname
 		});
-
 		
 		newContract.save(function(err, doc){
 			if (err){
 				res.json(err);
 			} else res.status(200);
 			var objectId = doc._id;
-			 var string = encodeURIComponent(objectId);
-			 res.redirect('/second?id=' + string);
+			var string = encodeURIComponent(objectId);
+			res.redirect('/second?id=' + string);
 		});
 	}
 });
@@ -218,21 +215,30 @@ app.post("/third", [ check('tenantEmail').isEmail()], function(req, res) {
 	if (!errors.isEmpty()) {
 		return res.status(422).json({ errors: errors.array() });
 	}
-	else{ 		
+	else{ 
+		var id = req.body.id;	
+		console.log(id);	
 		var tenantEmail = req.body.tenantEmail;
 		var text = 'Hello, this is me';
 		var mailOptions = {
-		    from: process.env.VRun || 'kolizei.annaabi@gmail.com', // sender address
+		    from: process.env.VRun || 'morehuethanyou@gmail.com', // sender address
 		    to: tenantEmail, // list of receivers
 		    subject: 'SecureBadger Rental Contract Signing', // Subject line
 		    text: text 
 		};
 		var transporter = nodemailer.createTransport({
-        service: 'Gmail',
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true,
         auth: {
-            user: process.env.VRun, 
-            pass: process.env.VRpw
-        		}
+        	type: 'OAuth2',
+            user: 'morehuethanyou@gmail.com',//process.env.VRun,
+            clientId: '53321458068-trn63n6ed2b9v12sfu69ambasjgsnhlo.apps.googleusercontent.com',
+	        clientSecret: 'CQApPJMx3j_RRVG_wQB721kE',
+	        refreshToken: '1/f6CKj6DR_BX_Dj2uts3bEnONJtos4NooHI8gfAexFGQ',
+	        accessToken: 'ya29.GltzBq8eBvFkdSAaxKv5ydZE-JF6g4awam7eNlEsRez-jjqIo0fWfjP_i9bBG4qcT4IYAx5IYIX0JHl7BgaAwxkzBZ1Httkh6_lNwUXPEgjk0PUPj6PrVb-_ZCci' 
+            //pass: process.env.VRpw
+        	}
 		});
 		transporter.sendMail(mailOptions, function(error, info){
 		    if(error){
@@ -243,8 +249,9 @@ app.post("/third", [ check('tenantEmail').isEmail()], function(req, res) {
 		        res.json({yo: info.response});
 		    };
 		});
-
-		res.redirect('/fourth');
+		var stringId = encodeURIComponent(id);
+		console.log(stringId);
+		res.redirect('/fourth?id='+stringId);
 		}});
 
 // Authentication routes
