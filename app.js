@@ -116,10 +116,24 @@ app.get("/second", function(req, res){
 	res.send(result);
 });
 app.get("/third", function(req, res){
-	res.sendFile(path.join(__dirname+'/views/page3.html'));
+	var id = req.query.id;
+	var infile = path.join(__dirname+'/views/page3.html');
+	var source = fs.readFileSync(infile, 'utf8');	
+	var template = handlebars.compile(source);
+	var data = {'ID': id};
+	var result = template(data);
+	res.send(result);
 });
-app.get("/fourth", function(req, res){
-	res.sendFile(path.join(__dirname+'/views/page4.html'));
+app.get("/fourth", async function(req, res){
+	var id = req.query.id;
+	let ctr = await Contract.findById(id);
+	var infile = path.join(__dirname+'/views/page4.html');
+	var source = fs.readFileSync(infile, 'utf8');	
+	var template = handlebars.compile(source);
+	var data = {'tenantname': ctr.nameOfTenant, 'ownername': ctr.nameOfOwner, 'address': ctr.objectAddress, 'contract-name': ctr.contractName, 
+	'sum': ctr.rentSum, 'conditions': ctr.otherConditions};
+	var result = template(data);
+	res.send(result);
 });
 app.get("/contractgen",  async function(req, res){
 	var id = req.query.id;
@@ -193,6 +207,7 @@ app.post("/", [ check('ownername').isLength({ max: 31 }), check('tenantname').is
 			nameOfTenant : req.body.tenantname,
 			rentSumCurrency : req.body.currency,
 			dueDate : req.body.rentdate,
+			rentSum : req.body.suminput,
 			objectAddress : req.body.objectaddress,
 			spaceForRent : req.body.rentspace,
 			otherConditions : req.body.conditions,
@@ -219,7 +234,7 @@ app.post("/third", [ check('tenantEmail').isEmail()], function(req, res) {
 		var id = req.body.id;	
 		console.log(id);	
 		var tenantEmail = req.body.tenantEmail;
-		var text = 'Hello, this is me';
+		var text = 'Tenant authentication required, follow this link:';
 		var mailOptions = {
 		    from: process.env.VRun || 'morehuethanyou@gmail.com', // sender address
 		    to: tenantEmail, // list of receivers

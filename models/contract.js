@@ -7,6 +7,7 @@ var contractInfoSchema = new mongoose.Schema({
 	nameOfTenant: String,
 	rentSumCurrency: String,
 	dueDate: String,
+	rentSum: Number,
 	objectAddress: String,
 	spaceForRent: Number,
 	otherConditions: String,
