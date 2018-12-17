@@ -134,6 +134,8 @@ app.get("/fourth", async function(req, res){
 	'sum': ctr.rentSum, 'conditions': ctr.otherConditions};
 	var result = template(data);
 	res.send(result);
+	//res.sendFile(path.join(__dirname+'/views/fourth.txt'));
+
 });
 app.get("/contractgen",  async function(req, res){
 	var id = req.query.id;

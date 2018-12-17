@@ -1,1 +1,75 @@
 .green-bg,.white-bg{box-sizing:border-box}#emptyPagenumber,#pagenumber{margin-top:5%}body,html{height:100%}h3{color:#000;margin-bottom:5%}body{background-color:#14251F;color:#61E8DC;font-family:Poppins,sans-serif}@media only screen and (max-width:600px){#statusOfSign{visibility:hidden;height:0}}h5{font-weight:600;margin-bottom:5vh}.container{padding-top:5vh;padding-bottom:5vh;height:100%}#contentbox{min-height:80vh;display:flex;flex-direction:column;justify-content:center}.green-bg{background-color:#1CBBB4;text-align:right;color:#fff}.white-bg{background-color:#fff}textarea.form-control.signature{width:50%;border:none;outline:0;background:0 0;height:calc(2.25rem + 2px)}.col-sm-4{padding-top:1%}input.form-control:disabled{display:block;width:100%;border:none;border-bottom:2px solid #e8ebed;outline:0;background:0 0;padding:6px 12px 6px 0;box-shadow:none;-webkit-transition:none;border-radius:0;margin-bottom:2%}#cancelbutton,#nextbutton{float:right;overflow:hidden;color:#fff;background-color:#eb1d5d;font-weight:400;margin:5%;cursor:pointer;border-radius:3px!important;border:none!important;-webkit-appearance:none;padding:1%;text-decoration:none}#pagenumber{color:#999;font-size:18px;font-weight:400}
+@media screen and (max-width: 300px) {
+}
+.nextbutton{
+	float:right;overflow:hidden;color:#fff;background-color:#eb1d5d;font-weight:400;margin:5%!important;cursor:pointer;border-radius:3px!important;border:none!important;-webkit-appearance:none;padding:1%;text-decoration:none;
+}
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 60%;
+  height:50%;
+}
+.modal input{
+	margin: 5px;
+}
+h1{
+	color:white;
+}
+.modalContainer{
+	height:100%;
+}
+#green-bg{
+	padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 50px;
+	display: inline-block;
+	background-color: #aaaaff;
+	vertical-align: top;
+	background-color:#1CBBB4;
+	width:100%;
+}
+#white-bg{
+	padding-left: 50px;
+	padding-right: 50px;
+}
+.modal  label{
+	color:black;
+	margin: .5rem;
+}
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}

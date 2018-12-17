@@ -20,8 +20,7 @@
 	</head>
 <body>
  	<div class="container">
-        <!--<form action="#">-->
- 			<h5>S E C U R E B A D G E R</h5>
+ 		<h5>S E C U R E B A D G E R</h5>
  			<div id="contentbox">
  				<div class="row">
                     <div class="col-sm-4 green-bg">
@@ -45,7 +44,11 @@
                         	<input type="text" class="form-control" id="owner" disabled value="{{ownername}}">   	
                     </div>
                     <div class="col-sm-4 white-bg">
-                    	<textarea title="signature of owner" class="form-control signature"  id="signature1">Not signed</textarea>
+                        {{#if signed}}  
+                    	<textarea title="signature of owner" class="form-control signature">Signed</textarea>
+                        {{else}}
+                        <textarea title="signature of owner" class="form-control signature">Not signed</textarea>
+                        {{/if}}
                     </div>
                 </div>
                 <div class="row">
@@ -58,7 +61,11 @@
                         <input type="text" class="form-control" id="tenant" disabled value="{{tenantname}}">
                     </div>
                     <div class="col-sm-4 white-bg">
-                        <textarea title="signature of tenant" class="form-control signature"  id="signature2">Not signed</textarea>
+                        {{#if signed}}  
+                        <textarea title="signature of owner" class="form-control signature">Signed</textarea>
+                        {{else}}
+                        <textarea title="signature of owner" class="form-control signature">Not signed</textarea>
+                        {{/if}}
                     </div>
                 </div>
                 <div class="row">
@@ -110,27 +117,40 @@
                     <div class="col-sm-4 white-bg">
                     </div>
                 </div>
-                <!-- sign muutub inactiveks kui juba signitud-->
-                <form method="POST" name="auth" action="/smartid">
-                    <div>
-                        <input type="text" name="riik" id="riik">
-                        <label for="riik">Riik</label>
-
-                        <input type="text" name="isikukood" id="isikukood">
-                        <label for="isikukood">Isikukood</label>
-                    
+                <div id="id01" class="modal">
+                    <form method="POST" name="auth" action="/smartid" class="modal-content animate">
+                    <div class="modalContainer">
+                        <div id="green-bg">
+                            <div class="row">
+                            <h1>SmartId authentification</h1>
+                            </div>
+                        </div>
+                        <div id="white-bg">
+                             <div class="row">
+                                <input type="text" name="riik" id="riik">
+                                <label for="riik">Country (EE, LV)</label>
+                            </div>
+                            <div class="row">
+                                <input type="text" name="isikukood" id="isikukood">
+                                <label for="isikukood">ID-code</label>
+                            </div>
+                             <div class="row">
+                                <input value="Sign the contract" class="button nextbutton" type="submit">
+                                <button onclick="closeModal()" class="button" id="cancelbutton">Close</button>
+                            </div>
+                        </div>
                     </div>
+                 </form>
+                </div>
                     <div class="row">
                     	<div class="col-sm-4 green-bg">
                     </div>
                 	<div class="col-sm-8 white-bg">
-                        <input value="Sign the contract" class="button" id="nextbutton" type="submit">
-                        <a href="#" class="button" id="cancelbutton">Cancel</a>
+                        <button id="nextbutton" type="button" onclick="openModal()">Sign the contract</button>
 				    </div>
 			     </div>
-                 </form>
-		      </div>
-          <!--</form>-->
+		    </div>
      	</div>
+        <script src="../scripts/page4.js"></script>
 	</body>
 </html>
